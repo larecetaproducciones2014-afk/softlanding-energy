@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestro sistema para tu hogar | Softlanding Energy</title>
+  <meta name="description" content="Conoce los componentes del sistema de energía solar con respaldo Softlanding: paneles bifaciales, inversor, baterías LiFePO4 y estructura de aluminio.">
+  <meta property="og:title" content="Nuestro sistema para tu hogar | Softlanding Energy">
+  <meta property="og:url" content="https://softlanding-energy.com/sistema.html">
+  <meta property="og:image" content="https://softlanding-energy.com/og-image.jpg">
+  <link rel="canonical" href="https://softlanding-energy.com/sistema.html">
+  <!-- GA4: GTM-XXXXXXX -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --sl-green:#7AB648;--sl-green-dark:#5A9A2A;--sl-green-light:#9FD464;
+      --sl-navy:#2E4057;--sl-navy-dark:#1B2A3A;--sl-navy-light:#3E5470;
+      --sl-white:#FFFFFF;--sl-surface:#F4F9F4;--sl-surface2:#E8F5E9;
+      --sl-text:#1A1A2A;--sl-muted:#546E7A;--sl-border:#C8E6C9;--sl-orange:#E65100;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Inter',sans-serif;color:var(--sl-text);background:var(--sl-white);}
+    h1,h2,h3,h4{font-family:'Nunito',sans-serif;}
+    #navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.98);box-shadow:0 2px 20px rgba(0,0,0,0.08);}
+    .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:72px;}
+    .nav-logo img{height:48px;display:block;}
+    .nav-links{display:flex;align-items:center;gap:8px;}
+    .nav-links a{font-weight:500;font-size:15px;color:var(--sl-navy);text-decoration:none;padding:8px 12px;border-radius:6px;transition:background .2s,color .2s;}
+    .nav-links a:hover{background:var(--sl-surface);color:var(--sl-green-dark);}
+    .nav-links a.active{color:var(--sl-green-dark);font-weight:700;}
+    .btn-nav{background:var(--sl-green);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;padding:12px 20px;border-radius:8px;text-decoration:none;transition:background .2s;white-space:nowrap;}
+    .btn-nav:hover{background:var(--sl-green-dark);}
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--sl-navy);margin:5px 0;}
+    #mobile-menu{display:none;flex-direction:column;background:#fff;border-top:1px solid var(--sl-border);padding:16px 24px 24px;}
+    #mobile-menu a{font-weight:500;font-size:16px;color:var(--sl-navy);text-decoration:none;padding:14px 0;border-bottom:1px solid var(--sl-surface);}
+    #mobile-menu .btn-nav{margin-top:16px;text-align:center;}
+    @media(max-width:767px){.nav-links{display:none;}.hamburger{display:block;}#mobile-menu.open{display:flex;}}
+
+    .hero{padding:120px 24px 80px;background:linear-gradient(135deg,var(--sl-navy-dark) 0%,#1B3A1F 100%);text-align:center;}
+    .hero h1{font-size:clamp(32px,5vw,56px);font-weight:900;color:#fff;margin-bottom:16px;}
+    .hero p{font-size:20px;color:rgba(255,255,255,0.8);max-width:600px;margin:0 auto 24px;}
+    .chips{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+    .chip{background:rgba(122,182,72,0.2);border:1px solid rgba(122,182,72,0.4);color:var(--sl-green-light);font-weight:700;font-size:14px;padding:8px 20px;border-radius:20px;}
+
+    .container{max-width:1100px;margin:0 auto;}
+    .section-label{display:inline-block;background:var(--sl-surface2);color:var(--sl-green-dark);font-weight:700;font-size:13px;padding:6px 14px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;}
+    .section-title{font-size:clamp(28px,4vw,42px);font-weight:900;color:var(--sl-navy);line-height:1.2;margin-bottom:32px;}
+    section{padding:80px 24px;}
+
+    /* COMPONENTES */
+    .comp-grid{display:flex;flex-direction:column;gap:24px;}
+    .comp-card{display:flex;gap:32px;align-items:center;background:var(--sl-surface);border-radius:16px;padding:32px;border-left:5px solid var(--sl-green);transition:box-shadow .2s;}
+    .comp-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.08);}
+    .comp-card .icon{font-size:48px;color:var(--sl-green);min-width:60px;text-align:center;}
+    .comp-card h3{font-size:20px;font-weight:800;color:var(--sl-navy);margin-bottom:6px;}
+    .comp-card p{font-size:15px;color:var(--sl-muted);line-height:1.6;}
+    @media(max-width:767px){.comp-card{flex-direction:column;gap:16px;}}
+
+    /* TAMBIÉN INCLUYE */
+    .incluye{background:var(--sl-navy);}
+    .incluye .section-title{color:#fff;}
+    .incluye-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:40px;}
+    .incluye-item{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.06);border-radius:10px;padding:16px 20px;}
+    .incluye-item .check{color:var(--sl-green);font-size:18px;}
+    .incluye-item span{font-size:15px;color:rgba(255,255,255,0.9);font-weight:500;}
+
+    /* BENEFICIOS BANNER */
+    .ben-banner{background:var(--sl-green);}
+    .ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center;}
+    .ben-item .icon{font-size:40px;color:rgba(255,255,255,0.9);margin-bottom:16px;}
+    .ben-item h3{font-size:20px;font-weight:800;color:#fff;margin-bottom:8px;}
+    .ben-item p{font-size:15px;color:rgba(255,255,255,0.85);}
+    @media(max-width:767px){.ben-grid{grid-template-columns:1fr;gap:24px;}}
+
+    /* PROCESO COMPRA */
+    .proceso{background:var(--sl-surface);}
+    .proceso-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:48px;}
+    .proceso-step{background:#fff;border-radius:14px;padding:28px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+    .proceso-step .num{width:48px;height:48px;background:var(--sl-green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;margin:0 auto 16px;}
+    .proceso-step h3{font-size:17px;font-weight:800;color:var(--sl-navy);margin-bottom:8px;}
+    .proceso-step p{font-size:14px;color:var(--sl-muted);line-height:1.6;}
+
+    /* CTA */
+    .cta{background:linear-gradient(135deg,var(--sl-navy-dark) 0%,#1B3A1F 100%);text-align:center;}
+    .cta h2{font-size:clamp(28px,4vw,42px);font-weight:900;color:#fff;margin-bottom:16px;}
+    .cta p{font-size:18px;color:rgba(255,255,255,0.8);margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto;}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--sl-green);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:16px;padding:16px 32px;border-radius:10px;text-decoration:none;transition:all .2s;min-height:56px;}
+    .btn-primary:hover{background:var(--sl-green-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(122,182,72,0.4);}
+
+    footer{background:var(--sl-navy-dark);color:rgba(255,255,255,0.8);padding:60px 24px 0;}
+    .footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;}
+    .footer-brand img{height:44px;margin-bottom:16px;}
+    .footer-brand .tagline{font-family:'Nunito',sans-serif;font-weight:700;font-size:15px;color:var(--sl-green-light);margin-bottom:8px;}
+    .footer-brand p{font-size:14px;line-height:1.7;opacity:0.7;}
+    .footer-col h4{font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:1px;margin-bottom:20px;}
+    .footer-col a{display:block;color:rgba(255,255,255,0.65);font-size:14px;text-decoration:none;margin-bottom:10px;transition:color .2s;}
+    .footer-col a:hover{color:var(--sl-green-light);}
+    .footer-col p{font-size:14px;color:rgba(255,255,255,0.65);margin-bottom:8px;}
+    .footer-bottom{max-width:1200px;margin:0 auto;padding:24px 0;border-top:1px solid rgba(255,255,255,0.08);margin-top:48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+    .footer-bottom p{font-size:13px;color:rgba(255,255,255,0.4);}
+    .footer-bottom a{color:var(--sl-green-light);text-decoration:none;}
+    @media(max-width:767px){.footer-grid{grid-template-columns:1fr;gap:32px;}}
+    .wa-float{position:fixed;bottom:24px;right:24px;z-index:9999;background:#25D366;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);text-decoration:none;font-size:28px;transition:transform .2s;}
+    .wa-float:hover{transform:scale(1.1);}
+  </style>
+</head>
+<body>
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index-hogar.html" class="nav-logo"><img src="LOGOTIPO_SOFTLANDING_A_COLOR_Y_VECTORIZADO_Mesa_de_trabajo_1.png" alt="Softlanding Energy"></a>
+    <div class="nav-links">
+      <a href="index-hogar.html">Inicio</a>
+      <a href="como-funciona.html">Cómo funciona</a>
+      <a href="sistema.html" class="active">Sistema</a>
+      <a href="beneficios.html">Beneficios</a>
+      <a href="preguntas.html">Preguntas</a>
+      <a href="https://wa.me/524425611029?text=Hola%20Softlanding%2C%20quiero%20mi%20asesor%C3%ADa%20gratuita" target="_blank" class="btn-nav">Agenda tu asesoría gratuita</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+  <div id="mobile-menu">
+    <a href="index-hogar.html">Inicio</a><a href="como-funciona.html">Cómo funciona</a><a href="sistema.html">Sistema</a><a href="beneficios.html">Beneficios</a><a href="preguntas.html">Preguntas</a>
+    <a href="https://wa.me/524425611029?text=Hola%20Softlanding%2C%20quiero%20mi%20asesor%C3%ADa%20gratuita" target="_blank" class="btn-nav">Agenda tu asesoría gratuita</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Energía solar con respaldo</h1>
+  <p>Un sistema diseñado para darte ahorro, seguridad y tranquilidad todos los días.</p>
+  <div class="chips">
+    <span class="chip"><i class="fa-solid fa-sun" style="margin-right:6px;"></i>Genera</span>
+    <span class="chip"><i class="fa-solid fa-battery-full" style="margin-right:6px;"></i>Almacena</span>
+    <span class="chip"><i class="fa-solid fa-shield-halved" style="margin-right:6px;"></i>Protege</span>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <span class="section-label">Componentes</span>
+    <h2 class="section-title">¿Qué incluye el sistema?</h2>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <div class="icon"><i class="fa-solid fa-solar-panel"></i></div>
+        <div>
+          <h3>Paneles solares bifaciales</h3>
+          <p>Alta eficiencia para generar energía limpia. La tecnología bifacial aprovecha la radiación tanto frontal como reflejada, maximizando la generación por metro cuadrado disponible en tu techo.</p>
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="icon"><i class="fa-solid fa-microchip"></i></div>
+        <div>
+          <h3>Inversor de 3 kW</h3>
+          <p>Tecnología de conversión y administración de energía. Detecta cortes de CFE en menos de 20 milisegundos y activa el respaldo automáticamente. Incluye monitoreo remoto por app o panel web.</p>
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="icon"><i class="fa-solid fa-battery-full"></i></div>
+        <div>
+          <h3>Baterías de respaldo LiFePO4</h3>
+          <p>Almacenamiento de energía para mayor tranquilidad. Química segura, sin riesgo de incendio, con más de 3,000 ciclos garantizados. Operación estable entre -20°C y +60°C.</p>
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+        <div>
+          <h3>Estructura de aluminio</h3>
+          <p>Diseño optimizado para tu instalación. Aluminio anodizado certificado para cargas de viento y sismo según norma mexicana. Ligera y duradera.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="incluye">
+  <div class="container">
+    <span class="section-label" style="background:rgba(122,182,72,0.2);color:var(--sl-green-light)">Todo incluido</span>
+    <h2 class="section-title">También incluye</h2>
+    <div class="incluye-grid">
+      <div class="incluye-item"><span class="check"><i class="fa-solid fa-check"></i></span><span>Protecciones DC/AC</span></div>
+      <div class="incluye-item"><span class="check"><i class="fa-solid fa-check"></i></span><span>Cableado de calidad</span></div>
+      <div class="incluye-item"><span class="check"><i class="fa-solid fa-check"></i></span><span>Conectores MC4</span></div>
+      <div class="incluye-item"><span class="check"><i class="fa-solid fa-check"></i></span><span>Canalización</span></div>
+      <div class="incluye-item"><span class="check"><i class="fa-solid fa-check"></i></span><span>Instalación profesional</span></div>
+      <div class="incluye-item"><span class="check"><i class="fa-solid fa-check"></i></span><span>Configuración y puesta en marcha</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="ben-banner">
+  <div class="container">
+    <div class="ben-grid">
+      <div class="ben-item">
+        <div class="icon"><i class="fa-solid fa-piggy-bank"></i></div>
+        <h3>Ahorro</h3>
+        <p>Reduce tu consumo de energía de la red eléctrica hasta un 90%.</p>
+      </div>
+      <div class="ben-item">
+        <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>Protege</h3>
+        <p>Mantén lo importante siempre en funcionamiento durante apagones.</p>
+      </div>
+      <div class="ben-item">
+        <div class="icon"><i class="fa-solid fa-heart"></i></div>
+        <h3>Tranquilidad</h3>
+        <p>Energía limpia y confiable para tu hogar, cada día del año.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proceso">
+  <div class="container">
+    <span class="section-label">El camino</span>
+    <h2 class="section-title">Cómo avanzamos juntos</h2>
+    <div class="proceso-grid">
+      <div class="proceso-step">
+        <div class="num">1</div>
+        <h3>Asesoría personalizada</h3>
+        <p>Analizamos tus necesidades y diseñamos la mejor solución para tu hogar.</p>
+      </div>
+      <div class="proceso-step">
+        <div class="num">2</div>
+        <h3>Propuesta a tu medida</h3>
+        <p>Recibe un plan claro con inversión, ahorro estimado y tiempo de retorno. Sin sorpresas.</p>
+      </div>
+      <div class="proceso-step">
+        <div class="num">3</div>
+        <h3>Instalación profesional</h3>
+        <p>Con equipo certificado y los más altos estándares. Terminamos en 1-2 días hábiles.</p>
+      </div>
+      <div class="proceso-step">
+        <div class="num">4</div>
+        <h3>Monitoreo y soporte</h3>
+        <p>Tu sistema siempre en óptimas condiciones con acceso remoto y soporte técnico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>¿Listo para instalar tu sistema?</h2>
+  <p>Agenda tu asesoría gratuita y recibe una propuesta personalizada.</p>
+  <a href="https://wa.me/524425611029?text=Hola%20Softlanding%2C%20quiero%20saber%20sobre%20el%20sistema%20para%20mi%20hogar" target="_blank" class="btn-primary" style="font-size:18px;padding:20px 40px;">
+    <i class="fa-brands fa-whatsapp"></i> Agenda tu asesoría gratuita
+  </a>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="LOGOTIPO_SOFTLANDING_A_COLOR_Y_VECTORIZADO_Mesa_de_trabajo_1.png" alt="Softlanding Energy">
+      <div class="tagline">Your Trusted Partner</div>
+      <p>Una empresa de ACISSA — Almacenamiento y Eficiencia de Energía.</p>
+      <p style="margin-top:8px;"><a href="https://softlanding-energy.com" style="color:var(--sl-green-light);text-decoration:none;">softlanding-energy.com</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Páginas</h4>
+      <a href="index-hogar.html">Inicio</a><a href="como-funciona.html">Cómo funciona</a><a href="sistema.html">Sistema</a><a href="beneficios.html">Beneficios</a><a href="preguntas.html">Preguntas</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <p><i class="fa-brands fa-whatsapp" style="color:var(--sl-green);margin-right:6px;"></i> +52 442 561 1029</p>
+      <p style="margin-top:8px;opacity:0.6;font-size:13px;">Asesoría gratuita disponible</p>
+      <a href="https://wa.me/524425611029" target="_blank" class="btn-primary" style="margin-top:16px;font-size:14px;padding:12px 20px;display:inline-flex;"><i class="fa-brands fa-whatsapp"></i> Escribir ahora</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Softlanding Energy — <a href="https://softlanding-energy.com">softlanding-energy.com</a> · Todos los derechos reservados</p>
+    <p style="font-size:12px;">Producido por <a href="https://designxai.com.mx" target="_blank">Design X AI</a></p>
+  </div>
+</footer>
+<a href="https://wa.me/524425611029?text=Hola%20Softlanding%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20sus%20sistemas%20de%20energ%C3%ADa%20solar" class="wa-float" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<script>document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('mobile-menu').classList.toggle('open');});</script>
+</body>
+</html>

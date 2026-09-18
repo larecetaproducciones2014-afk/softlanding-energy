@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Softlanding Energy — Your Trusted Partner</title>
+  <meta name="description" content="Sistemas de energía solar con respaldo de baterías para hogares y empresas. Softlanding Energy — softlanding-energy.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{--sl-green:#7AB648;--sl-green-dark:#5A9A2A;--sl-navy:#2E4057;--sl-navy-dark:#1B2A3A;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Inter',sans-serif;background:var(--sl-navy-dark);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;}
+    .logo{margin-bottom:16px;}
+    .logo img{height:56px;}
+    .tagline{font-family:'Nunito',sans-serif;font-weight:700;font-size:15px;color:var(--sl-green);letter-spacing:2px;text-transform:uppercase;margin-bottom:48px;}
+    h1{font-family:'Nunito',sans-serif;font-size:clamp(28px,5vw,48px);font-weight:900;color:#fff;text-align:center;margin-bottom:16px;line-height:1.2;}
+    .sub{font-size:18px;color:rgba(255,255,255,0.65);text-align:center;margin-bottom:56px;max-width:520px;}
+    .cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;width:100%;max-width:700px;}
+    .card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:40px 32px;text-align:center;text-decoration:none;transition:all .25s;position:relative;overflow:hidden;}
+    .card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .25s;}
+    .card.hogar::before{background:linear-gradient(135deg,rgba(122,182,72,0.15),transparent);}
+    .card.industrial::before{background:linear-gradient(135deg,rgba(46,64,87,0.6),transparent);}
+    .card:hover{transform:translateY(-6px);border-color:var(--sl-green);box-shadow:0 20px 60px rgba(0,0,0,0.4);}
+    .card:hover::before{opacity:1;}
+    .card-icon{font-size:52px;margin-bottom:20px;position:relative;z-index:1;}
+    .card-title{font-family:'Nunito',sans-serif;font-size:24px;font-weight:900;color:#fff;margin-bottom:10px;position:relative;z-index:1;}
+    .card-desc{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.6;margin-bottom:24px;position:relative;z-index:1;}
+    .card-cta{display:inline-flex;align-items:center;gap:8px;background:var(--sl-green);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;padding:12px 24px;border-radius:8px;transition:background .2s;position:relative;z-index:1;}
+    .card:hover .card-cta{background:var(--sl-green-dark);}
+    .footer-txt{margin-top:48px;font-size:13px;color:rgba(255,255,255,0.35);text-align:center;}
+    .footer-txt a{color:rgba(255,255,255,0.5);text-decoration:none;}
+    @media(max-width:600px){.cards{grid-template-columns:1fr;max-width:380px;}.card{padding:32px 24px;}}
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <img src="hogar/LOGOTIPO_SOFTLANDING_A_COLOR_Y_VECTORIZADO_Mesa_de_trabajo_1.png" alt="Softlanding Energy">
+  </div>
+  <div class="tagline">Your Trusted Partner</div>
+  <h1>Elige tu solución energética</h1>
+  <p class="sub">Sistemas de energía solar con respaldo de baterías para tu hogar o tu empresa.</p>
+  <div class="cards">
+    <a href="hogar/index-hogar.html" class="card hogar">
+      <div class="card-icon">🏠</div>
+      <div class="card-title">Para tu hogar</div>
+      <div class="card-desc">Tu familia siempre con luz, Wi-Fi y seguridad, sin importar lo que pase afuera.</div>
+      <div class="card-cta">Ver solución hogar <i class="fa-solid fa-arrow-right"></i></div>
+    </a>
+    <a href="industrial/index-industrial.html" class="card industrial">
+      <div class="card-icon">🏭</div>
+      <div class="card-title">Para tu empresa</div>
+      <div class="card-desc">Continuidad operativa y reducción de factura eléctrica para negocios que no pueden detenerse.</div>
+      <div class="card-cta">Ver solución empresarial <i class="fa-solid fa-arrow-right"></i></div>
+    </a>
+  </div>
+  <div class="footer-txt">
+    © 2026 Softlanding Energy — <a href="https://softlanding-energy.com">softlanding-energy.com</a> · WhatsApp: +52 442 561 1029
+  </div>
+</body>
+</html>
