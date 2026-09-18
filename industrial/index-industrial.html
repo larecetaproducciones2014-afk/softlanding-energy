@@ -37,7 +37,7 @@
     @media(max-width:900px){.nav-links{display:none;}.hamburger{display:block;}#mobile-menu.open{display:flex;}}
 
     /* HERO */
-    .hero{min-height:100vh;padding-top:72px;background:linear-gradient(135deg,var(--sl-navy-dark) 0%,var(--sl-navy) 60%,#0d1f0d 100%);display:flex;align-items:center;position:relative;overflow:hidden;}
+    .hero{min-height:100vh;padding-top:72px;background:linear-gradient(135deg,rgba(27,42,58,0.90) 0%,rgba(46,64,87,0.86) 60%,rgba(13,31,13,0.90) 100%),url('../imagenes/hero-industrial.png') center/cover no-repeat;display:flex;align-items:center;position:relative;overflow:hidden;}
     .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(122,182,72,0.1) 0%,transparent 60%);}
     .hero-inner{max-width:1200px;margin:0 auto;padding:80px 24px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;}
     .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(122,182,72,0.15);border:1px solid rgba(122,182,72,0.3);color:var(--sl-green-light);font-size:13px;font-weight:600;padding:6px 16px;border-radius:20px;margin-bottom:24px;}
@@ -172,21 +172,25 @@
     <p class="section-sub">Un corte de luz no solo detiene tus máquinas. Detiene tu negocio.</p>
     <div class="costo-grid">
       <div class="costo-card">
+        <img src="../imagenes/produccion-detenido.png" alt="Producción detenida" style="width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:16px;">
         <div class="icon"><i class="fa-solid fa-gears"></i></div>
         <h3>Pérdida de producción</h3>
         <p>Cada hora parada puede costar miles de pesos en producto, tiempo y mano de obra.</p>
       </div>
       <div class="costo-card">
+        <img src="../imagenes/datacenter-caido.png" alt="Datacenter caído" style="width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:16px;">
         <div class="icon"><i class="fa-solid fa-server"></i></div>
         <h3>Daño a equipos</h3>
         <p>Cortes súbitos dañan compresoras, CNC, servidores y equipos de refrigeración industrial.</p>
       </div>
       <div class="costo-card">
+        <img src="../imagenes/perdida-de-alimentos.png" alt="Pérdida de alimentos" style="width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:16px;">
         <div class="icon"><i class="fa-solid fa-handshake-slash"></i></div>
         <h3>Pérdida de clientes</h3>
         <p>No cumplir entregas por apagones daña la reputación y las relaciones comerciales que tanto costó construir.</p>
       </div>
       <div class="costo-card">
+        <img src="../imagenes/perdida-financiera.png" alt="Pérdida financiera" style="width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:16px;">
         <div class="icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
         <h3>Factura eléctrica</h3>
         <p>Las tarifas industriales de CFE siguen subiendo. Sin generación propia, sigues pagando cada vez más.</p>

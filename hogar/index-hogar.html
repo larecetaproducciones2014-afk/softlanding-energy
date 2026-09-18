@@ -88,12 +88,12 @@
     /* HERO */
     .hero {
       min-height: 100vh; padding-top: 72px;
-      background: linear-gradient(135deg, var(--sl-navy-dark) 0%, var(--sl-navy) 50%, #1B3A1F 100%);
+      background: linear-gradient(135deg, rgba(27,42,58,0.90) 0%, rgba(46,64,87,0.84) 50%, rgba(27,58,31,0.90) 100%), url('../imagenes/hero-principal.png') center/cover no-repeat;
       display: flex; align-items: center; position: relative; overflow: hidden;
     }
     .hero::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 60% 50%, rgba(122,182,72,0.15) 0%, transparent 70%);
+      background: radial-gradient(ellipse at 60% 50%, rgba(122,182,72,0.12) 0%, transparent 70%);
     }
     .hero-inner {
       max-width: 1200px; margin: 0 auto; padding: 80px 24px;
@@ -362,21 +362,25 @@
     </div>
     <div class="problema-grid">
       <div class="problema-card">
+        <img src="../imagenes/apagon.png" alt="Apagón en el hogar" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:20px;">
         <div class="icon"><i class="fa-solid fa-wifi"></i></div>
         <h3>Comunicación</h3>
         <p>Sin módem, Wi-Fi ni dispositivos cargados.</p>
       </div>
       <div class="problema-card">
+        <img src="../imagenes/inseguridad-nocturna.png" alt="Inseguridad nocturna" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:20px;">
         <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
         <h3>Seguridad</h3>
         <p>Cámaras, accesos y puertas eléctricas comprometidas.</p>
       </div>
       <div class="problema-card">
+        <img src="../imagenes/factura-cfe-alta.png" alt="Factura CFE alta" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:20px;">
         <div class="icon"><i class="fa-solid fa-house"></i></div>
         <h3>Confort</h3>
         <p>Sin ventiladores, televisión ni electrodomésticos esenciales.</p>
       </div>
       <div class="problema-card">
+        <img src="../imagenes/dependencia-de-la.red.png" alt="Dependencia de la red eléctrica" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:20px;">
         <div class="icon"><i class="fa-solid fa-display"></i></div>
         <h3>Continuidad</h3>
         <p>Trabajar, estudiar o continuar la rutina se vuelve difícil.</p>
@@ -421,10 +425,7 @@
         </div>
       </div>
       <div class="solucion-visual">
-        <div class="solucion-house">
-          <div class="icon-big"><i class="fa-solid fa-solar-panel"></i></div>
-          <p>Tu sistema genera, almacena y entrega energía <strong>sin importar lo que pase en la red eléctrica.</strong></p>
-        </div>
+        <img src="../imagenes/diagrama-del-proceso.png" alt="Diagrama del proceso solar Softlanding" style="width:100%;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.18);">
       </div>
     </div>
   </div>
