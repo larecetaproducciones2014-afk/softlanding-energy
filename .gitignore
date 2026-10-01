@@ -10,3 +10,12 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# Interno: nunca se despliega ni se sube
+docs-internos/
+growth/
+.wrangler/
+*.docx
+*.pptx
+*.zip
+*.ai
