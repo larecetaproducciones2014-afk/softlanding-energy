@@ -1,0 +1,64 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import Icon from './Icon.astro';
+import { rubroList, rubros } from '../data/rubros';
+import { landingsBy } from '../data/landings';
+import { wa } from '../config/site';
+const path = Astro.url.pathname;
+const active = (p: string) => (path.startsWith(p) ? 'page' : undefined);
+---
+<header class="hdr">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Softlanding, inicio">
+      <Image src={logo} alt="Softlanding — Your Trusted Partner" height={44} width={170} loading="eager" />
+    </a>
+    <nav class="nav" aria-label="Principal">
+      {rubroList.map((r) => (
+        <details class="dd">
+          <summary aria-current={active(`/${r.key}/`)}>{r.nombre}</summary>
+          <div class="panel">
+            <a class="all" href={`/${r.key}/`}>Ver todo {r.nombre.toLowerCase()} →</a>
+            {landingsBy(r.key).map((l) => <a href={`/${r.key}/${l.slug}/`}>{l.nombre}</a>)}
+          </div>
+        </details>
+      ))}
+      <a href="/calculadora/" aria-current={active('/calculadora/')}>Calculadora</a>
+      <a href="/mantenimiento/" aria-current={active('/mantenimiento/')}>Mantenimiento</a>
+      <a href="/soluciones/" aria-current={active('/soluciones/')}>Soluciones</a>
+    </nav>
+    <a class="btn btn-primary cta" href="/diagnostico/">Solicitar asesoría</a>
+    <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mnav"><Icon name="menu" /></button>
+  </div>
+  <div class="mnav" id="mnav">
+    {rubroList.map((r) => (
+      <>
+        <div class="grp">{r.nombre}</div>
+        <a href={`/${r.key}/`}>{r.quien}</a>
+        <div class="sub">{landingsBy(r.key).map((l) => <a href={`/${r.key}/${l.slug}/`}>{l.nombre}</a>)}</div>
+      </>
+    ))}
+    <div class="grp">Más</div>
+    <a href="/calculadora/">Calculadora de consumo</a>
+    <a href="/mantenimiento/">Mantenimiento y reparación</a>
+    <a href="/soluciones/">Soluciones</a>
+    <a href="/casos/">Experiencia</a>
+    <a href="/diagnostico/" style="color:var(--green-700)">Solicitar asesoría gratuita</a>
+    <a href={wa('Hola Softlanding, quiero información.')} target="_blank" rel="noopener">Escribir por WhatsApp</a>
+  </div>
+</header>
+<script>
+  const b = document.querySelector<HTMLButtonElement>('.burger');
+  const m = document.getElementById('mnav');
+  b?.addEventListener('click', () => {
+    const o = m!.classList.toggle('open');
+    b.setAttribute('aria-expanded', String(o));
+  });
+  // Cierra los menús desplegables al hacer clic fuera
+  document.addEventListener('click', (e) => {
+    document.querySelectorAll<HTMLDetailsElement>('.dd[open]').forEach((d) => { if (!d.contains(e.target as Node)) d.open = false; });
+  });
+  document.querySelectorAll<HTMLDetailsElement>('.dd').forEach((d) => d.addEventListener('toggle', () => {
+    if (d.open) document.querySelectorAll<HTMLDetailsElement>('.dd[open]').forEach((o) => { if (o !== d) o.open = false; });
+  }));
+</script>

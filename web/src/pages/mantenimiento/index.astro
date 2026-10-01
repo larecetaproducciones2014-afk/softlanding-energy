@@ -1,0 +1,76 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Icon from '../../components/Icon.astro';
+import Faq from '../../components/Faq.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import asesor from '../../assets/img/asesor.png';
+import { wa } from '../../config/site';
+const servicios = [
+  { i: 'sun', t: 'Limpieza de paneles', d: 'El polvo y la suciedad reducen la generación. Limpieza segura y periódica para recuperar el rendimiento de tu sistema.' },
+  { i: 'gauge', t: 'Revisión preventiva', d: 'Inspección de paneles, estructura, cableado, protecciones y conexiones, con reporte del estado de tu instalación.' },
+  { i: 'cpu', t: 'Diagnóstico y reparación de inversores', d: 'Si tu inversor marca falla, no genera o se reinicia, lo revisamos y proponemos reparación o reemplazo.' },
+  { i: 'battery', t: 'Baterías', d: 'Revisión del estado de tus baterías y reemplazo o ampliación de capacidad cuando haga falta.' },
+  { i: 'chart', t: 'Tu sistema no rinde lo esperado', d: 'Analizamos por qué genera menos de lo que debería: sombras, suciedad, conexiones o configuración.' },
+  { i: 'plug', t: 'Ampliaciones', d: 'Más paneles o baterías para un sistema que ya tienes, aunque no lo haya instalado Softlanding.' },
+];
+const faq = [
+  { q: '¿Atienden sistemas que no instaló Softlanding?', a: 'Sí. Revisamos y reparamos sistemas de otras marcas e instaladores; primero hacemos un diagnóstico para saber qué necesita.' },
+  { q: '¿Cada cuánto debo limpiar mis paneles?', a: 'Depende del polvo y la lluvia de tu zona. Como referencia, se recomienda una limpieza cada tres a seis meses y una revisión eléctrica anual.' },
+  { q: '¿Cuánto cuesta el servicio?', a: 'Depende del número de paneles, la altura y el tipo de falla. Después de recibir tu solicitud te damos un precio claro antes de hacer el trabajo.' },
+  { q: '¿Tienen pólizas de mantenimiento anual?', a: 'Pregunta a tu asesor por esquemas de mantenimiento periódico para tu sistema.' },
+];
+---
+<Base title="Mantenimiento y reparación de paneles solares, inversores y baterías"
+  description="Limpieza, revisión preventiva y reparación de paneles solares, inversores y baterías en Querétaro y el centro del país. Atendemos sistemas instalados por cualquier empresa."
+  theme="res" waMsg="Hola Softlanding, necesito mantenimiento o reparación de mi sistema solar.">
+  <Hero image={asesor} h1="Mantenimiento y reparación de sistemas solares" sub="Limpieza, revisión y reparación de paneles, inversores y baterías. Atendemos tu sistema aunque no lo hayamos instalado nosotros."
+        crumbs={[{ label: 'Inicio', href: '/' }, { label: 'Mantenimiento' }]}>
+    <a class="btn btn-primary btn-lg" href="#solicitud">Solicitar servicio</a>
+    <a class="btn btn-ghost-light btn-lg" href={wa('Hola Softlanding, necesito mantenimiento o reparación de mi sistema solar.')} target="_blank" rel="noopener"><Icon name="whatsapp" /> WhatsApp</a>
+  </Hero>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Servicios</span><h2>Que tu sistema rinda como el primer día</h2>
+        <p>Un sistema solar sin mantenimiento genera menos y puede fallar cuando más lo necesitas, sobre todo si tiene baterías de respaldo.</p></div>
+      <div class="grid g3">
+        {servicios.map((s) => <div class="card"><div class="ico"><Icon name={s.i} /></div><h3>{s.t}</h3><p>{s.d}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Cómo funciona</span><h2>Tres pasos, sin sorpresas</h2></div>
+      <div class="steps cols">
+        <div class="step"><h3>Cuéntanos qué pasa</h3><p>Llena el formulario o escríbenos por WhatsApp con la falla o el servicio que necesitas.</p></div>
+        <div class="step"><h3>Diagnóstico y precio claro</h3><p>Te contactamos, revisamos lo que sea necesario y te damos un precio antes de empezar.</p></div>
+        <div class="step"><h3>Servicio y reporte</h3><p>Realizamos el trabajo y te dejamos el estado de tu sistema por escrito.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="solicitud">
+    <div class="wrap" style="max-width:820px">
+      <LeadForm tipo="mantenimiento" rubro="residencial" sector="mantenimiento" titulo="Solicita tu servicio" texto="Cuéntanos de tu sistema y la falla o el servicio que necesitas." boton="Solicitar servicio" empresa={false} id="contacto">
+        <div class="row2">
+          <div><label for="m-serv">¿Qué necesitas?</label>
+            <select id="m-serv" name="servicio" data-snap><option>Limpieza de paneles</option><option>Revisión preventiva</option><option>Reparación de inversor</option><option>Revisión o cambio de baterías</option><option>Mi sistema genera menos de lo normal</option><option>Ampliación del sistema</option><option>Otro</option></select></div>
+          <div><label for="m-inst">¿Lo instaló Softlanding?</label>
+            <select id="m-inst" name="instalo_softlanding" data-snap><option>No lo sé</option><option>Sí</option><option>No, otra empresa</option></select></div>
+        </div>
+        <div class="row2">
+          <div><label for="m-pan">Número aproximado de paneles</label><input id="m-pan" name="num_paneles" data-snap inputmode="numeric" maxlength="4" /></div>
+          <div><label for="m-inv">Marca del inversor (si la conoces)</label><input id="m-inv" name="marca_inversor" data-snap maxlength="60" /></div>
+        </div>
+        <div><label for="m-urg">Urgencia</label>
+          <select id="m-urg" name="urgencia" data-snap><option>Puede esperar unos días</option><option>Lo antes posible</option><option>Urgente: no tengo energía</option></select></div>
+      </LeadForm>
+    </div>
+  </section>
+  <Faq items={faq} />
+  <CtaBand titulo="¿Quieres tu propio sistema?" texto="Si todavía no tienes paneles, calcula qué sistema necesitarías." waMsg="Hola Softlanding, quiero información." boton="Calcular mi sistema" href="/calculadora/" />
+</Base>

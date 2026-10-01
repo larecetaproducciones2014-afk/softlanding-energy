@@ -1,0 +1,15 @@
+---
+import { wa } from '../config/site';
+interface Props { titulo: string; texto: string; waMsg: string; boton?: string; href?: string }
+const { titulo, texto, waMsg, boton = 'Solicitar asesoría gratuita', href = '/diagnostico/' } = Astro.props;
+---
+<section class="band">
+  <div class="wrap">
+    <h2>{titulo}</h2>
+    <p>{texto}</p>
+    <div class="acts">
+      <a class="btn btn-light btn-lg" href={href}>{boton}</a>
+      <a class="btn btn-ghost-light btn-lg" href={wa(waMsg)} target="_blank" rel="noopener" data-track="whatsapp_cta">Escribir por WhatsApp</a>
+    </div>
+  </div>
+</section>

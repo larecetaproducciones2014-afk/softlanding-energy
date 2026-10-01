@@ -1,0 +1,18 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { wa } from '../../config/site';
+---
+<Base title="Recibimos tu solicitud" description="Gracias por contactar a Softlanding. Un asesor te contactará pronto." noindex>
+  <section class="sec">
+    <div class="wrap center" style="max-width:720px">
+      <div class="ico" style="margin:0 auto 20px;width:72px;height:72px"><Icon name="check" /></div>
+      <h1>¡Recibimos tu solicitud!</h1>
+      <p class="lead" style="margin:16px auto">Un asesor de Softlanding te contactará pronto. Si quieres avanzar más rápido, escríbenos por WhatsApp y mándanos una foto de tu recibo de luz.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:26px">
+        <a class="btn btn-wa btn-lg" href={wa('Hola Softlanding, acabo de enviar mi solicitud desde el sitio.')} target="_blank" rel="noopener"><Icon name="whatsapp" /> Escribir por WhatsApp</a>
+        <a class="btn btn-outline btn-lg" href="/">Volver al inicio</a>
+      </div>
+    </div>
+  </section>
+</Base>

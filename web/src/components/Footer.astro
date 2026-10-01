@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import logoBlanco from '../assets/logo-blanco.png';
+import { site, wa } from '../config/site';
+import { rubroList } from '../data/rubros';
+---
+<footer class="ftr">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <Image src={logoBlanco} alt="Softlanding" height={48} width={185} loading="lazy" />
+        <p class="small">Sistemas de energía solar y almacenamiento para que tu hogar, tu negocio o tu planta nunca se detengan.</p>
+        <p class="small" style="margin-top:10px">Una empresa de {site.empresa}.</p>
+      </div>
+      <div>
+        <h4>Soluciones</h4>
+        {rubroList.map((r) => <a href={`/${r.key}/`}>{r.nombre}</a>)}
+        <a href="/soluciones/">Microred, BESS y servicios</a>
+        <a href="/casos/">Experiencia</a>
+      </div>
+      <div>
+        <h4>Herramientas</h4>
+        <a href="/calculadora/">Calculadora de consumo</a>
+        <a href="/diagnostico/">Diagnóstico energético</a>
+        <a href="/mantenimiento/">Mantenimiento y reparación</a>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <a href={wa('Hola Softlanding, quiero información.')} target="_blank" rel="noopener">WhatsApp {site.telefono}</a>
+        <a href={`tel:${site.telefono.replace(/\s/g, '')}`}>{site.telefono}</a>
+        <p class="small" style="padding:5px 0">{site.cobertura}.</p>
+        <a href="/aviso-de-privacidad/">Aviso de privacidad</a>
+      </div>
+    </div>
+    <div class="bar">
+      <span>© {new Date().getFullYear()} Softlanding Energy · softlanding-energy.com · Todos los derechos reservados</span>
+      <span>{site.tagline}</span>
+    </div>
+  </div>
+</footer>

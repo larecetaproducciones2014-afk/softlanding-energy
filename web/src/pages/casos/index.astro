@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { site } from '../../config/site';
+const casos = [
+  { i: 'car', t: 'Planta de autopartes', u: 'Tamaulipas', d: 'Proyecto de energía para una planta del sector automotriz.', l: '/industrial/automotriz/' },
+  { i: 'factory', t: 'Planta de manufactura', u: 'Guanajuato', d: 'Proyecto de energía para una planta de manufactura en el Bajío.', l: '/industrial/metalmecanica/' },
+  { i: 'droplet', t: 'Comisión Estatal de Agua', u: 'Sonora', d: 'Proyecto para un organismo público de agua.', l: '/industrial/agua-y-gobierno/' },
+  { i: 'bed', t: 'Cadena hotelera', u: 'Quintana Roo', d: 'Proyecto de energía para una cadena de hoteles.', l: '/comercial/hoteles/' },
+];
+---
+<Base title="Experiencia y proyectos" description="Proyectos de Softlanding en industria, sector público y hotelería, y alianza con la Asociación Mexicana de Data Centers." waMsg="Hola Softlanding, quiero conocer sus proyectos.">
+  <section class="sec sec-alt" style="padding:56px 0 30px"><div class="wrap">
+    <span class="eyebrow">Experiencia</span><h1>Proyectos en industria, sector público y hotelería</h1>
+    <p class="lead" style="margin-top:14px">Softlanding es una empresa de {site.empresa}. Estos son algunos de los sectores donde hemos trabajado.</p>
+  </div></section>
+  <section class="sec"><div class="wrap">
+    <div class="grid g2">
+      {casos.map((c) => (
+        <a class="card link" href={c.l} style="padding:30px"><div class="ico"><Icon name={c.i} /></div>
+          <h3>{c.t}</h3><p><b>{c.u}</b> · {c.d}</p><span class="more">Ver solución del sector <Icon name="arrow" /></span></a>
+      ))}
+    </div>
+    <div class="note" style="margin-top:28px">Somos socios comerciales de la <b>Asociación Mexicana de Data Centers</b>. Los detalles técnicos y de resultados de cada proyecto se comparten en la reunión de diagnóstico, con autorización de cada cliente.</div>
+  </div></section>
+  <CtaBand titulo="Conozcamos tu proyecto" texto="Cuéntanos de tu operación y te mostramos experiencia relevante para tu sector." waMsg="Hola Softlanding, quiero conocer sus proyectos." />
+</Base>

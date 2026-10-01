@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import { rubroList } from '../data/rubros';
+---
+<Base title="Página no encontrada" description="La página que buscas no existe." noindex>
+  <section class="sec"><div class="wrap center">
+    <span class="eyebrow">Error 404</span><h1>No encontramos esa página</h1>
+    <p class="lead" style="margin:16px auto 28px">Puede que el enlace haya cambiado. Elige tu camino:</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+      {rubroList.map((r) => <a class="btn btn-outline btn-lg" href={`/${r.key}/`}>{r.nombre}</a>)}
+      <a class="btn btn-primary btn-lg" href="/">Ir al inicio</a>
+    </div>
+  </div></section>
+</Base>

@@ -2,6 +2,11 @@ docs-internos
 growth
 .wrangler
 .git
+.dev.vars
+node_modules
+web/node_modules
+web/dist
+web/.astro
 *.pdf
 *.txt
 *.docx

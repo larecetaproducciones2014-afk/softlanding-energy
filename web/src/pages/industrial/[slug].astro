@@ -1,0 +1,9 @@
+---
+import SectorPage from '../../components/SectorPage.astro';
+import { landingsBy } from '../../data/landings';
+export function getStaticPaths() {
+  return landingsBy('industrial').map((l) => ({ params: { slug: l.slug }, props: { l } }));
+}
+const { l } = Astro.props;
+---
+<SectorPage l={l} />

@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Props { image: ImageMetadata; h1: string; sub: string; crumbs?: { label: string; href?: string }[]; chips?: string[]; alt?: string }
+const { image, h1, sub, crumbs = [], chips = [], alt = '' } = Astro.props;
+---
+<section class="hero">
+  <div class="bg">
+    <Image src={image} alt={alt} widths={[640, 960, 1280, 1800]} sizes="100vw" loading="eager" fetchpriority="high" quality={65} format="webp" />
+  </div>
+  <div class="wrap">
+    <div class="in">
+      {crumbs.length > 0 && (
+        <nav class="crumbs" aria-label="Ruta">
+          {crumbs.map((c, i) => (<>{i > 0 && <span>/</span>}{c.href ? <a href={c.href}>{c.label}</a> : <b>{c.label}</b>}</>))}
+        </nav>
+      )}
+      <h1>{h1}</h1>
+      <p>{sub}</p>
+      <div class="acts"><slot /></div>
+      {chips.length > 0 && <div class="chips">{chips.map((c) => <span class="chip">{c}</span>)}</div>}
+    </div>
+  </div>
+</section>

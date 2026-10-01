@@ -1,0 +1,105 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import Faq from '../../components/Faq.astro';
+import { calc } from '../../config/site';
+
+const casa = [
+  { id: 'refri', t: 'Refrigerador', kwh: 1.2 }, { id: 'wifi', t: 'Wi‑Fi y módem', kwh: 0.25 },
+  { id: 'luz', t: 'Iluminación LED', kwh: 0.6 }, { id: 'cam', t: 'Cámaras de seguridad', kwh: 0.4 },
+  { id: 'acc', t: 'Portón o acceso eléctrico', kwh: 0.1 }, { id: 'bomba', t: 'Bomba de agua (uso moderado)', kwh: 1.0 },
+  { id: 'tv', t: 'TV y ventiladores', kwh: 1.2 }, { id: 'pc', t: 'Laptops y cargadores', kwh: 0.5 },
+  { id: 'mini', t: 'Minisplit inverter (8 h)', kwh: 4.0 },
+];
+const negocio = [
+  { id: 'refcom', t: 'Refrigeración comercial', kwh: 8 }, { id: 'pos', t: 'Punto de venta y red', kwh: 0.8 },
+  { id: 'luzn', t: 'Iluminación', kwh: 3 }, { id: 'pcn', t: 'Equipo de cómputo', kwh: 2 },
+  { id: 'camn', t: 'Cámaras de seguridad', kwh: 0.6 }, { id: 'aan', t: 'Aire acondicionado', kwh: 10 },
+];
+const cfg = { hsp: calc.hspBajio, pr: calc.performanceRatio, panelW: calc.panelWatts, dod: calc.dod, pricing: calc.pricing };
+const faq = [
+  { q: '¿Qué tan exacto es este cálculo?', a: 'Es una estimación orientativa para que sepas el orden de magnitud. El dimensionamiento final se hace con tu recibo completo, la orientación y sombras de tu techo y una visita técnica.' },
+  { q: '¿Dónde veo mis kWh?', a: 'En tu recibo de CFE, en el apartado de consumo en kWh del periodo. En casas el recibo suele ser bimestral; en negocios, mensual.' },
+  { q: '¿Por qué no muestran el costo?', a: 'Porque un precio responsable depende de tu techo, tu instalación eléctrica y los equipos. Déjanos tus datos y recibe una cotización por escrito tras una revisión técnica.' },
+];
+---
+<Base title="Calculadora de consumo solar: ¿qué sistema necesito?"
+  description="Calcula el tamaño de sistema solar y de baterías que necesitas para tu casa o negocio a partir de los kWh de tu recibo de CFE. Estimación gratuita en dos minutos."
+  waMsg="Hola Softlanding, usé la calculadora y quiero una cotización.">
+  <section class="sec sec-alt" style="padding:56px 0 28px">
+    <div class="wrap">
+      <span class="eyebrow">Para casas y negocios</span>
+      <h1>Calculadora de consumo solar</h1>
+      <p class="lead" style="margin-top:14px">Con los kWh de tu recibo te decimos qué tamaño de sistema necesitarías, cuántos paneles y, si quieres respaldo, cuánta batería.</p>
+      <p class="note" id="ind-note" hidden style="margin-top:18px">¿Eres una planta industrial o un organismo público? Para cargas de este tamaño hacemos un <a href="/diagnostico/" style="color:var(--green-700);font-weight:700">diagnóstico energético</a> con medición de tu red.</p>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:28px">
+    <div class="wrap calc" id="calc" data-cfg={JSON.stringify(cfg)}>
+      <div class="formbox">
+        <h3>1. Tu consumo</h3>
+        <div class="frm">
+          <div><label>¿Dónde lo vas a instalar?</label>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="tipo" value="casa" checked /> Mi casa</label>
+              <label class="opt"><input type="radio" name="tipo" value="negocio" /> Mi negocio</label>
+            </div></div>
+          <div class="row2">
+            <div><label for="c-consumo">Consumo en kWh de tu recibo *</label><input id="c-consumo" type="number" inputmode="decimal" min="1" max="200000" step="1" placeholder="Ej. 600" /></div>
+            <div><label for="c-periodo">Periodo de ese recibo</label>
+              <select id="c-periodo"><option value="bimestral">Bimestral (2 meses)</option><option value="mensual">Mensual</option></select></div>
+          </div>
+          <div><label for="c-cob">¿Qué parte de tu consumo quieres cubrir con solar?</label>
+            <select id="c-cob"><option value="1">Todo (100 %)</option><option value="0.75">Tres cuartas partes (75 %)</option><option value="0.5">La mitad (50 %)</option></select>
+            <p class="help">Depende también del espacio disponible en tu techo.</p></div>
+          <h3 style="margin-top:8px">2. ¿Qué quieres lograr?</h3>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="objetivo" value="ahorro" /> Ahorrar en mi recibo</label>
+            <label class="opt"><input type="radio" name="objetivo" value="respaldo" /> Respaldo ante apagones</label>
+            <label class="opt"><input type="radio" name="objetivo" value="ambos" checked /> Ambos</label>
+          </div>
+          <div id="resp-box">
+            <label>¿Qué quieres mantener encendido durante un apagón?</label>
+            <div class="opts" id="cargas-casa">
+              {casa.map((c) => <label class="opt"><input type="checkbox" name="carga" value={c.id} data-kwh={c.kwh} data-t={c.t} checked={['refri','wifi','luz','cam'].includes(c.id)} /> {c.t}</label>)}
+            </div>
+            <div class="opts" id="cargas-negocio" hidden>
+              {negocio.map((c) => <label class="opt"><input type="checkbox" name="carga" value={c.id} data-kwh={c.kwh} data-t={c.t} checked={['refcom','pos','luzn'].includes(c.id)} /> {c.t}</label>)}
+            </div>
+            <p class="help">Valores típicos de consumo por equipo; tu asesor mide los reales en la visita.</p>
+            <div style="margin-top:14px"><label for="c-horas">¿Cuántas horas de respaldo quieres?</label>
+              <select id="c-horas"><option value="4">4 horas</option><option value="8" selected>8 horas</option><option value="12">12 horas</option><option value="24">24 horas</option></select></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="result" aria-live="polite" id="result">
+        <h3>Tu sistema sugerido</h3>
+        <p class="fine" id="empty">Escribe el consumo de tu recibo para ver el resultado.</p>
+        <div class="kpis" id="kpis" hidden>
+          <div class="kpi"><b id="r-kwp">—</b><span>Sistema solar sugerido (kWp)</span></div>
+          <div class="kpi"><b id="r-pan">—</b><span>Paneles solares de <span id="r-w"></span> W</span></div>
+          <div class="kpi"><b id="r-area">—</b><span>Espacio aproximado de techo</span></div>
+          <div class="kpi"><b id="r-gen">—</b><span>Generación estimada por mes (kWh)</span></div>
+          <div class="kpi" id="k-bat"><b id="r-bat">—</b><span>Batería de respaldo sugerida (kWh, LiFePO4)</span></div>
+          <div class="kpi" id="k-cost" hidden><b id="r-cost">—</b><span id="r-cost-sub"></span></div>
+        </div>
+        <p class="fine" id="cost-note">El costo se define con una revisión técnica. Pide tu cotización por escrito más abajo.</p>
+        <a class="btn btn-primary" style="width:100%;margin-top:16px" href="#contacto">Recibir mi cotización</a>
+        <p class="fine" style="margin-top:14px">Estimación orientativa. Supuestos: <span id="r-hsp"></span> horas sol pico/día (valor típico del Bajío), eficiencia global del sistema <span id="r-pr"></span> %, <span id="r-dod"></span> % de capacidad útil de la batería. La capacidad final se ajusta a los módulos de batería disponibles.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="wrap" style="max-width:820px">
+      <LeadForm tipo="calculadora" rubro="residencial" titulo="Recibe tu cotización formal" texto="Enviamos tu cálculo a un asesor, que lo revisa contigo y prepara una propuesta por escrito." boton="Quiero mi cotización" empresa={false} />
+    </div>
+  </section>
+  <Faq items={faq} titulo="Sobre la calculadora" />
+</Base>
+<script>
+  import '../../scripts/calc';
+</script>

@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Icon from '../../components/Icon.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Faq from '../../components/Faq.astro';
+import indSistema from '../../assets/img/ind-sistema.png';
+import { rubros } from '../../data/rubros';
+const S = [
+  { id: 'medicion', i: 'gauge', t: 'Medición y monitoreo avanzado de la red eléctrica',
+    d: 'Una radiografía precisa del estado actual de tu sistema energético: identifica los picos de consumo, los horarios en que ocurren y la calidad de la energía que recibe tu instalación.',
+    p: ['Dimensionar el sistema de almacenamiento con baterías y calcular la capacidad real necesaria', 'Detectar armónicos, ruidos eléctricos y distorsiones de onda que afecten tus equipos o el cumplimiento normativo', 'Detectar consumos atípicos, sobrecargas y fugas de energía'] },
+  { id: 'microred', i: 'cpu', t: 'Microred integrada con control inteligente',
+    d: 'Una red integrada a tu sistema eléctrico actual, con un módulo de control inteligente, almacenamiento de energía BESS y un generador alterno como paneles solares. Su objetivo es administrar las distintas fuentes para ahorrar en consumo y garantizar siempre la capacidad de energía.',
+    p: ['Garantiza la cantidad de energía que tu planta requiere', '100 % escalable: puedes comenzar tu proyecto de eficiencia por etapas', 'Reportes predictivos con IA que proyectan el comportamiento de tu energía', 'Detecta qué fuente tiene mejor rendimiento y hace los cambios automáticamente'] },
+  { id: 'bess', i: 'battery', t: 'Almacenamiento BESS: peak shaving y time shifting',
+    d: 'El almacenamiento mejora la calidad de la energía y reduce el costo en tarifas con horarios, como la GDMTH, que tiene tres horarios: base, intermedio y punta.',
+    p: ['Peak shaving: bajar o eliminar el pico de demanda en horario punta, el más caro', 'Time shifting: cargar las baterías en horario base (más barato) y descargarlas en horario punta', 'Administración de máxima demanda y tiempo de uso para menor costo'] },
+  { id: 'codigo-de-red', i: 'file', t: 'Código de Red',
+    d: 'Asesoría especializada en materia de cumplimiento con el Código de Red. Permite detectar ineficiencias, corregir desbalances y mejorar el perfil de consumo, optimizando el aprovechamiento de los sistemas de generación y almacenamiento que pudieran implementarse.', p: [] },
+  { id: 'regulatorio', i: 'scale', t: 'Asesoría jurídico‑regulatoria',
+    d: 'Determinamos la situación jurídica, regularizamos y habilitamos legalmente la operación y el aprovechamiento de soluciones energéticas como generación distribuida, suministro calificado o esquemas de autoabastecimiento, según el caso.',
+    p: ['Revisión de permisos, registros, avisos y demás obligaciones ante la CNE, el CENACE y la CFE', 'La Ley del Sector Eléctrico, publicada en el DOF el 18 de marzo de 2025, establece las bases de la participación de los particulares en la generación de energía'] },
+  { id: 'contrato', i: 'coins', t: 'Evaluación de condiciones contractuales',
+    d: 'Asesoría técnica y financiera para entender el esquema tarifario de tu contrato de suministro eléctrico vigente y determinar el costo real de la energía que consumes, con base en tu perfil de carga, estacionalidad y comportamiento de consumo.',
+    p: ['Medidas de optimización de costos', 'Revisión de cumplimiento regulatorio'] },
+  { id: 'huella-de-carbono', i: 'leaf', t: 'Consultoría de huella de carbono',
+    d: 'Asesoramiento para inscribir el proyecto energético en mecanismos internacionales de mitigación de emisiones, mediante el procedimiento de certificación para obtener Créditos de Emisión Reducida (CER).',
+    p: ['Una vez verificado el cumplimiento de los requisitos técnicos, legales y ambientales, podrás comercializar los certificados en mercados voluntarios o regulados, generando una fuente adicional de ingresos'] },
+];
+const faq = rubros.industrial.faq.slice(0, 3);
+---
+<Base title="Soluciones: microred, almacenamiento BESS, Código de Red y más"
+  description="Microredes con solar y BESS, medición avanzada de la red, peak shaving, Código de Red, asesoría jurídico‑regulatoria, contrato de suministro y huella de carbono."
+  theme="ind" waMsg="Hola Softlanding, quiero información de sus soluciones energéticas.">
+  <Hero image={indSistema} h1="Soluciones energéticas de punta a punta" sub="Desde medir tu red hasta operar tu microred con inteligencia artificial, con asesoría regulatoria y de sustentabilidad." crumbs={[{ label: 'Inicio', href: '/' }, { label: 'Soluciones' }]}
+        chips={['Desde 0.5 MW hasta 20 MW', 'Ahorros posibles mayores al 30 %', 'Hasta 100 % en sistemas autónomos']}>
+    <a class="btn btn-primary btn-lg" href="/diagnostico/">Solicitar diagnóstico energético</a>
+  </Hero>
+  <section class="sec">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Qué hacemos</span><h2>Siete servicios, un solo socio</h2>
+        <p>Los ahorros y alcances dependen de cada proyecto y se definen tras el diagnóstico. Importamos directamente con proveedores internacionales.</p></div>
+      <div style="display:grid;gap:22px">
+        {S.map((s) => (
+          <article class="card" id={s.id} style="display:grid;gap:18px;padding:30px">
+            <div style="display:flex;gap:16px;align-items:center"><div class="ico" style="flex:none"><Icon name={s.i} /></div><h3 style="font-size:1.4rem;margin:0">{s.t}</h3></div>
+            <p style="color:var(--muted);max-width:80ch">{s.d}</p>
+            {s.p.length > 0 && <ul class="checks">{s.p.map((x) => <li>{x}</li>)}</ul>}
+          </article>
+        ))}
+      </div>
+      <div class="note" style="margin-top:32px"><b>Para casas y negocios</b> contamos con sistemas con paneles solares bifaciales, inversor híbrido y baterías de litio LiFePO4. Conoce las soluciones <a href="/residencial/" style="color:var(--green-700);font-weight:700">residenciales</a> y <a href="/comercial/" style="color:var(--green-700);font-weight:700">comerciales</a>.</div>
+    </div>
+  </section>
+  <Faq items={faq} />
+  <CtaBand titulo="Empieza con un diagnóstico" texto="Medimos tu red y definimos con datos qué proyecto tiene sentido para ti." waMsg="Hola Softlanding, quiero un diagnóstico energético." />
+</Base>

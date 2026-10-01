@@ -1,0 +1,89 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { rubroList } from '../data/rubros';
+import { landings } from '../data/landings';
+import { site } from '../config/site';
+const sectores = landings.filter((l) => l.rubro !== 'residencial').slice(0, 24);
+---
+<Base title="Softlanding | Energía solar con respaldo para hogares, negocios e industria"
+  description="Softlanding diseña sistemas de energía solar con almacenamiento para tu hogar, tu negocio o tu planta industrial. Base en Querétaro, cobertura en el centro del país."
+  waMsg="Hola Softlanding, quiero información.">
+  <section class="hero-home">
+    <div class="wrap">
+      <div class="in">
+        <span class="eyebrow">Your Trusted Partner</span>
+        <h1>Energía solar con respaldo que nunca se detiene</h1>
+        <p class="lead">Genera, almacena y protege tu energía. Cuéntanos qué necesitas proteger y te mostramos la solución.</p>
+      </div>
+      <div class="rubros">
+        {rubroList.map((r, i) => (
+          <a class="rubro" href={`/${r.key}/`}>
+            <div class="bg"><Image src={r.cardImagen} alt="" widths={[480, 720, 960]} sizes="(min-width:900px) 33vw, 100vw" quality={65} format="webp" loading={i === 0 ? 'eager' : 'lazy'} /></div>
+            <div class="body">
+              <div class="who">{r.quien}</div>
+              <h2>{r.nombre}</h2>
+              <p>{r.card}</p>
+              <span class="go">Ver soluciones <Icon name="arrow" /></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="head center"><span class="eyebrow">Cómo trabajamos</span><h2>Genera. Almacena. Protege.</h2>
+        <p>Los paneles solares reducen lo que pagas y las baterías mantienen funcionando lo que importa cuando la red falla. Un sistema solar sin almacenamiento se apaga con el apagón.</p></div>
+      <div class="grid g3">
+        <div class="card"><div class="ico"><Icon name="sun" /></div><h3>Genera</h3><p>Energía solar dimensionada a tu consumo real, no a una talla única.</p></div>
+        <div class="card"><div class="ico"><Icon name="battery" /></div><h3>Almacena</h3><p>Baterías de litio LiFePO4 y almacenamiento BESS para tu casa, negocio o planta.</p></div>
+        <div class="card"><div class="ico"><Icon name="shield" /></div><h3>Protege</h3><p>Respaldo automático de tus cargas críticas y control inteligente de tu energía.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="wrap grid g2">
+      <a class="card link" href="/calculadora/" style="padding:34px">
+        <div class="ico"><Icon name="gauge" /></div><h3 style="font-size:1.5rem">Calculadora de consumo</h3>
+        <p>Con los kWh de tu recibo, estima el tamaño del sistema que necesitarías y cuántos paneles. Para casas y negocios.</p>
+        <span class="more">Calcular ahora <Icon name="arrow" /></span>
+      </a>
+      <a class="card link" href="/mantenimiento/" style="padding:34px">
+        <div class="ico"><Icon name="wrench" /></div><h3 style="font-size:1.5rem">Mantenimiento y reparación</h3>
+        <p>Limpieza, revisión y reparación de paneles, inversores y baterías, aunque tu sistema no lo haya instalado Softlanding.</p>
+        <span class="more">Solicitar servicio <Icon name="arrow" /></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Experiencia</span><h2>Respaldados por {site.empresa.split(' — ')[0]}</h2>
+        <p>{site.empresa}. Hemos trabajado con industria, sector público y hotelería, y somos socios comerciales de la Asociación Mexicana de Data Centers.</p></div>
+      <div class="proof">
+        <div><b>Industria</b><span>Planta de autopartes (Tamaulipas) y planta de manufactura (Guanajuato)</span></div>
+        <div><b>Sector público</b><span>Comisión Estatal de Agua (Sonora)</span></div>
+        <div><b>Hotelería</b><span>Cadena hotelera (Quintana Roo)</span></div>
+        <div><b>Centros de datos</b><span>Socios de la Asociación Mexicana de Data Centers</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Para tu sector</span><h2>Soluciones por tipo de negocio</h2></div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        {landings.map((l) => (
+          <a class="btn btn-outline" style="min-height:44px;padding:8px 18px;font-weight:600" href={`/${l.rubro}/${l.slug}/`}>{l.nombre}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand titulo="¿Qué necesitas proteger?" texto="Cuéntanos de tu casa, tu negocio o tu planta. Un asesor te contacta, sin compromiso." waMsg="Hola Softlanding, quiero información." />
+</Base>

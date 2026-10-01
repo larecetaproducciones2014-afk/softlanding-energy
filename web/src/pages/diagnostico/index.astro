@@ -1,0 +1,61 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import Faq from '../../components/Faq.astro';
+import { landings } from '../../data/landings';
+import { rubros } from '../../data/rubros';
+const faq = rubros.industrial.faq.slice(3, 6);
+const sectores = landings.filter((l) => l.rubro !== 'residencial');
+---
+<Base title="Solicita tu diagnóstico energético gratuito"
+  description="Solicita un diagnóstico energético para tu planta, negocio o institución: análisis de recibo, picos de demanda, calidad de energía y dimensionamiento de almacenamiento."
+  theme="ind" waMsg="Hola Softlanding, quiero solicitar un diagnóstico energético.">
+  <section class="sec sec-alt" style="padding:56px 0 30px">
+    <div class="wrap">
+      <span class="eyebrow">Empresas, plantas e instituciones</span>
+      <h1>Solicita tu diagnóstico energético</h1>
+      <p class="lead" style="margin-top:14px">Conoce cuánto, cuándo y a qué costo consumes energía, y qué proyecto de microred, almacenamiento o respaldo tendría sentido para ti.</p>
+    </div>
+  </section>
+  <section class="sec" style="padding-top:30px">
+    <div class="wrap split" style="align-items:start">
+      <div>
+        <h2 style="font-size:1.6rem">Qué incluye</h2>
+        <ul class="checks" style="margin-top:18px">
+          <li>Revisión de tu recibo y tu tarifa eléctrica</li>
+          <li>Identificación de picos de consumo y horarios</li>
+          <li>Evaluación de calidad de energía: armónicos, ruido y distorsiones</li>
+          <li>Dimensionamiento del almacenamiento con tu consumo real</li>
+          <li>Orientación sobre Código de Red y marco regulatorio</li>
+        </ul>
+        <p class="note" style="margin-top:24px">Si tienes tu recibo a la mano, te ayudará a avanzar más rápido en la primera llamada.</p>
+        <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:8px">
+          {sectores.map((l) => <a href={`/${l.rubro}/${l.slug}/`} style="font-size:.9rem;color:var(--muted)">{l.nombre}</a>)}
+        </div>
+      </div>
+      <LeadForm tipo="diagnostico" rubro="industrial" titulo="Cuéntanos de tu operación" boton="Solicitar diagnóstico">
+        <div class="row2">
+          <div><label for="d-sector">Sector</label>
+            <select id="d-sector" name="sector_declarado" data-snap>
+              <option value="">Selecciona</option>
+              {sectores.map((l) => <option>{l.nombre}</option>)}
+              <option>Otro</option>
+            </select></div>
+          <div><label for="d-cargo">Tu cargo</label><input id="d-cargo" name="cargo" data-snap maxlength="80" /></div>
+        </div>
+        <div class="row2">
+          <div><label for="d-tarifa">Tarifa eléctrica</label>
+            <select id="d-tarifa" name="tarifa" data-snap><option value="">No lo sé</option><option>GDMTH</option><option>GDMTO</option><option>GDBT</option><option>PDBT</option><option>Otra</option></select></div>
+          <div><label for="d-demanda">Demanda máxima aprox. (kW)</label><input id="d-demanda" name="demanda_kw" data-snap inputmode="numeric" maxlength="8" placeholder="Opcional" /></div>
+        </div>
+        <div class="row2">
+          <div><label for="d-recibo">Recibo mensual aproximado</label>
+            <select id="d-recibo" name="recibo_mensual" data-snap><option value="">Prefiero comentarlo después</option><option>Menos de $50,000</option><option>$50,000 – $150,000</option><option>$150,000 – $500,000</option><option>Más de $500,000</option></select></div>
+          <div><label for="d-ciudad">Ciudad y estado</label><input id="d-ciudad" name="ciudad" data-snap maxlength="80" /></div>
+        </div>
+      </LeadForm>
+    </div>
+  </section>
+  <Faq items={faq} />
+</Base>

@@ -19,3 +19,9 @@ growth/
 *.pptx
 *.zip
 *.ai
+.dev.vars
+.env*
+wrangler.dev.jsonc
+
+# excepciones
+!web/public/robots.txt

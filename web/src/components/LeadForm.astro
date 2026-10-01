@@ -1,0 +1,41 @@
+---
+// Formulario único de captación. Envía a /api/lead (Worker) → Supabase (tenant Softlanding).
+// Los campos extra con atributo data-snap se guardan en calc_snapshot (diagnóstico, mantenimiento, calculadora).
+interface Props {
+  tipo: 'contacto' | 'diagnostico' | 'calculadora' | 'mantenimiento';
+  rubro?: 'residencial' | 'comercial' | 'industrial';
+  sector?: string;
+  titulo?: string;
+  texto?: string;
+  boton?: string;
+  empresa?: boolean;
+  id?: string;
+}
+const { tipo, rubro = '', sector = '', titulo = 'Solicita tu asesoría gratuita', texto = 'Déjanos tus datos y un asesor te contacta. Sin compromiso.', boton = 'Quiero que me contacten', empresa = rubro !== 'residencial', id = 'contacto' } = Astro.props;
+---
+<div class="formbox" id={id}>
+  <h3>{titulo}</h3>
+  <p style="color:var(--muted);margin-top:6px">{texto}</p>
+  <form class="frm lead-form" novalidate data-tipo={tipo} data-rubro={rubro} data-sector={sector}>
+    <div class="hp" aria-hidden="true"><label>No llenar este campo<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+    <div class="row2">
+      <div><label for={`${id}-nombre`}>Nombre completo *</label><input id={`${id}-nombre`} name="nombre" autocomplete="name" required maxlength="120" /></div>
+      <div><label for={`${id}-tel`}>WhatsApp o teléfono *</label><input id={`${id}-tel`} name="telefono" type="tel" inputmode="tel" autocomplete="tel" required maxlength="25" placeholder="442 000 0000" /></div>
+    </div>
+    <div class="row2">
+      <div><label for={`${id}-mail`}>Correo electrónico</label><input id={`${id}-mail`} name="correo" type="email" autocomplete="email" maxlength="160" /></div>
+      {empresa
+        ? <div><label for={`${id}-emp`}>Empresa</label><input id={`${id}-emp`} name="empresa" autocomplete="organization" maxlength="160" /></div>
+        : <div><label for={`${id}-mun`}>Municipio</label><input id={`${id}-mun`} name="municipio" data-snap autocomplete="address-level2" maxlength="80" /></div>}
+    </div>
+    <slot />
+    <div><label for={`${id}-msg`}>¿Algo que debamos saber? (opcional)</label><textarea id={`${id}-msg`} name="mensaje" maxlength="800"></textarea></div>
+    <label class="consent"><input type="checkbox" name="consentimiento" required />
+      <span>He leído el <a href="/aviso-de-privacidad/" target="_blank" rel="noopener">Aviso de Privacidad</a> y acepto que Softlanding use mis datos para contactarme respecto a mi solicitud. *</span></label>
+    <div class="msg" role="alert" aria-live="polite"></div>
+    <button class="btn btn-primary btn-lg" type="submit">{boton}</button>
+  </form>
+</div>
+<script>
+  import '../scripts/lead';
+</script>

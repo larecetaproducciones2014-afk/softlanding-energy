@@ -1,0 +1,115 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Hero from './Hero.astro';
+import Icon from './Icon.astro';
+import Faq from './Faq.astro';
+import CtaBand from './CtaBand.astro';
+import LeadForm from './LeadForm.astro';
+import { rubros } from '../data/rubros';
+import type { Landing } from '../data/landings';
+import { site, wa } from '../config/site';
+interface Props { l: Landing }
+const { l } = Astro.props;
+const r = rubros[l.rubro];
+const url = `${site.url}/${l.rubro}/${l.slug}/`;
+const faqs = [...l.faq, ...r.faq];
+const ind = l.rubro === 'industrial';
+const jsonLd = [
+  { '@context': 'https://schema.org', '@type': 'Service', name: `${l.nombre} — energía solar y almacenamiento`, description: l.meta, url,
+    provider: { '@type': 'Organization', name: site.name, url: site.url }, areaServed: { '@type': 'Country', name: 'México' },
+    serviceType: 'Energía solar con almacenamiento y respaldo' },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: site.url },
+    { '@type': 'ListItem', position: 2, name: r.nombre, item: `${site.url}/${l.rubro}/` },
+    { '@type': 'ListItem', position: 3, name: l.nombre, item: url } ] },
+];
+const msg = `Hola Softlanding, me interesa ${l.nombre.toLowerCase()} (${r.nombre.toLowerCase()}).`;
+---
+<Base title={l.h1} description={l.meta} theme={r.theme} jsonLd={jsonLd} waMsg={msg}>
+  <Hero image={l.imagen} h1={l.h1} sub={l.sub}
+        crumbs={[{ label: 'Inicio', href: '/' }, { label: r.nombre, href: `/${l.rubro}/` }, { label: l.nombre }]}>
+    <a class="btn btn-primary btn-lg" href="#contacto">{ind ? 'Solicitar diagnóstico energético' : 'Cotizar mi sistema'}</a>
+    {l.calc
+      ? <a class="btn btn-ghost-light btn-lg" href={`/calculadora/?rubro=${l.rubro}`}>Calcular mi consumo</a>
+      : <a class="btn btn-ghost-light btn-lg" href={wa(msg)} target="_blank" rel="noopener" data-track="whatsapp_hero"><Icon name="whatsapp" /> WhatsApp</a>}
+  </Hero>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">El problema</span><h2>{l.dolorTitulo}</h2></div>
+      <div class="grid g4">
+        {l.dolor.map((d) => (
+          <div class="card"><div class="ico"><Icon name={d.icono} /></div><h3>{d.t}</h3><p>{d.d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Cómo lo resolvemos</span>
+        <h2>{l.enfoque.titulo}</h2>
+        <p class="lead" style="margin:14px 0 22px">{l.enfoque.texto}</p>
+        <ul class="checks">{l.enfoque.puntos.map((p) => <li>{p}</li>)}</ul>
+        {l.notas?.map((n) => <p class="note" style="margin-top:22px">{n}</p>)}
+      </div>
+      <div class="pic"><Image src={l.imagenLista} alt="" widths={[480, 720, 960]} sizes="(min-width:900px) 560px, 100vw" quality={65} format="webp" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Cargas críticas</span><h2>{l.cargasTitulo ?? 'Lo que protegemos en tu operación'}</h2></div>
+      <div class="grid g4">
+        {l.cargas.map((c) => (
+          <div class="card" style="padding:20px;display:flex;gap:14px;align-items:center"><div class="ico" style="flex:none"><Icon name={c.icono} /></div><b style="font-size:1rem">{c.t}</b></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-dark">
+    <div class="wrap">
+      <div class="head center"><span class="eyebrow">{r.pasosTitulo}</span><h2>{ind ? 'Un método en tres pasos' : 'Así funciona'}</h2></div>
+      <div class="grid g3">
+        {r.pasos.map((p, i) => (
+          <div class="card"><div class="ico"><Icon name={['sun', 'battery', 'shield'][i] ?? 'check'} /></div><h3>{p.t}</h3><p>{p.d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {l.experiencia && (
+    <section class="sec-sm">
+      <div class="wrap"><div class="note"><b>Experiencia.</b> {l.experiencia} <a href="/casos/" style="color:var(--green-700);font-weight:700">Ver experiencia →</a></div></div>
+    </section>
+  )}
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Proceso</span><h2>De la primera conversación a la operación</h2></div>
+      <div class="steps cols">{r.proceso.map((p) => <div class="step"><h3>{p.t}</h3><p>{p.d}</p></div>)}</div>
+    </div>
+  </section>
+
+  <Faq items={faqs} />
+
+  <section class="sec sec-alt">
+    <div class="wrap" style="max-width:820px">
+      {ind
+        ? <LeadForm tipo="diagnostico" rubro={l.rubro} sector={l.slug} titulo="Solicita tu diagnóstico energético" texto="Cuéntanos de tu planta y un especialista te contacta para agendar la medición y el análisis de tu recibo." boton="Solicitar diagnóstico">
+            <div class="row2">
+              <div><label for="contacto-tarifa">Tarifa eléctrica</label>
+                <select id="contacto-tarifa" name="tarifa" data-snap><option value="">No lo sé</option><option>GDMTH</option><option>GDMTO</option><option>GDBT</option><option>PDBT</option><option>Otra</option></select></div>
+              <div><label for="contacto-demanda">Demanda máxima aproximada (kW)</label><input id="contacto-demanda" name="demanda_kw" data-snap inputmode="numeric" maxlength="8" placeholder="Opcional" /></div>
+            </div>
+          </LeadForm>
+        : <LeadForm tipo="contacto" rubro={l.rubro} sector={l.slug} titulo={`Cotiza tu sistema para ${l.nombre.toLowerCase()}`} />}
+    </div>
+  </section>
+
+  <CtaBand titulo={ind ? 'Empieza con un diagnóstico de tu energía' : 'Hablemos de tu proyecto'} texto="Te acompañamos desde la asesoría hasta la instalación y el monitoreo." waMsg={msg} />
+</Base>

@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+import { site } from '../config/site';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import { wa } from '../config/site';
+
+interface Props {
+  title: string;
+  description: string;
+  theme?: 'res' | 'com' | 'ind';
+  image?: string;
+  noindex?: boolean;
+  jsonLd?: object[];
+  waMsg?: string;
+}
+const { title, description, theme, image, noindex = false, jsonLd = [], waMsg = 'Hola Softlanding, quiero información.' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const ogImage = new URL(image ?? '/og-default.jpg', site.url).href;
+const fullTitle = title.includes('Softlanding') ? title : `${title} | Softlanding`;
+const org = {
+  '@context': 'https://schema.org', '@type': 'Organization', name: site.name, url: site.url,
+  logo: `${site.url}/favicon.png`, telephone: site.telefono, slogan: site.tagline,
+  parentOrganization: { '@type': 'Organization', name: 'ACISSA' },
+  areaServed: { '@type': 'Country', name: 'México' },
+};
+---
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Softlanding Energy" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#1B2A3A" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@700;800;900&display=swap" />
+  <script type="application/ld+json" set:html={JSON.stringify(org)} />
+  {jsonLd.map((j) => <script type="application/ld+json" set:html={JSON.stringify(j)} />)}
+</head>
+<body class={theme ? `theme-${theme}` : ''}>
+  <a class="skip" href="#main">Saltar al contenido</a>
+  <Header />
+  <main id="main"><slot /></main>
+  <Footer />
+  <a class="wafab" href={wa(waMsg)} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp a Softlanding" data-track="whatsapp_float">
+    <Icon name="whatsapp" />
+  </a>
+</body>
+</html>
