@@ -1,0 +1,11 @@
+# Vista previa local: `docker compose up` -> http://localhost:8080
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      # Edita site/ y recarga el navegador sin reconstruir la imagen
+      - ./site:/usr/share/nginx/html:ro
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: unless-stopped

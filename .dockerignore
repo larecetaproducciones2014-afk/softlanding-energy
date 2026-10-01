@@ -1,0 +1,10 @@
+docs-internos
+growth
+.wrangler
+.git
+*.pdf
+*.txt
+*.docx
+*.pptx
+*.zip
+*.ai

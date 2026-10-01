@@ -1,0 +1,7 @@
+# Sitio estático de Softlanding servido con nginx (vista previa local / contenedor).
+# En producción se despliega con Cloudflare (wrangler deploy); esto es para probar igual que en producción.
+FROM nginx:1.27-alpine
+COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY site/ /usr/share/nginx/html/
+EXPOSE 80
+HEALTHCHECK --interval=30s --timeout=3s CMD wget -qO- http://localhost/ >/dev/null || exit 1
