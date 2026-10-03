@@ -1,27 +1,11 @@
 import type { ImageMetadata } from 'astro';
 import type { RubroKey } from './rubros';
-import resFamilia from '../assets/img/res-familia.png';
-import resRed from '../assets/img/res-red.png';
-import resInseguridad from '../assets/img/res-inseguridad.png';
-import diagrama from '../assets/img/diagrama.png';
-import producto from '../assets/img/producto.png';
-import comRestaurante from '../assets/img/com-restaurante.png';
-import comHotel from '../assets/img/com-hotel.png';
-import comClinica from '../assets/img/com-clinica.png';
-import comOficinas from '../assets/img/com-oficinas.png';
-import comMerma from '../assets/img/com-merma.png';
-import indHero from '../assets/img/ind-hero.png';
-import indPlanta from '../assets/img/ind-planta.png';
-import indManufactura from '../assets/img/ind-manufactura.png';
-import indParo from '../assets/img/ind-paro.png';
-import indDatacenter from '../assets/img/ind-datacenter.png';
-import indAgro from '../assets/img/ind-agro.png';
-import indSistema from '../assets/img/ind-sistema.png';
+import { generatedImages } from './generated-images';
 
 export interface Item { icono: string; t: string; d?: string }
 export interface Landing {
   rubro: RubroKey; slug: string; nombre: string; icono: string;
-  meta: string; h1: string; sub: string; imagen: ImageMetadata; imagenLista: ImageMetadata;
+  meta: string; h1: string; sub: string; imagen: ImageMetadata; imagenLista: ImageMetadata; imagenDetalle: ImageMetadata;
   dolorTitulo: string; dolor: Item[];
   cargasTitulo?: string; cargas: Item[];
   enfoque: { titulo: string; texto: string; puntos: string[] };
@@ -40,7 +24,7 @@ export const landings: Landing[] = [
     meta: 'Sistema solar con baterías de respaldo para tu casa: que el Wi‑Fi, el refrigerador, las cámaras y la iluminación sigan funcionando cuando se va la luz. Querétaro y centro del país.',
     h1: 'Que se vaya la luz no significa que tu casa se apague',
     sub: 'Paneles solares con baterías de respaldo para mantener lo importante funcionando: Wi‑Fi, refrigerador, cámaras e iluminación.',
-    imagen: resFamilia, imagenLista: resRed,
+    imagen: generatedImages['respaldo-apagones-hero'], imagenLista: generatedImages['respaldo-apagones-tarjeta'], imagenDetalle: generatedImages['respaldo-apagones-detalle'],
     dolorTitulo: 'Un apagón no solo te deja a oscuras',
     dolor: [
       { icono: 'wifi', t: 'Comunicación', d: 'Sin módem, Wi‑Fi ni dispositivos cargados, trabajar y estudiar se detiene.' },
@@ -66,7 +50,7 @@ export const landings: Landing[] = [
     meta: 'Reduce tu recibo de CFE con un sistema solar dimensionado a tu consumo real, con opción de baterías de respaldo. Calcula qué sistema necesitarías.',
     h1: 'Genera tu propia energía y reduce tu recibo de luz',
     sub: 'Un sistema solar dimensionado a tu consumo real, con la opción de sumar baterías para respaldo. Calcula en dos minutos qué sistema necesitarías.',
-    imagen: diagrama, imagenLista: producto,
+    imagen: generatedImages['ahorro-recibo-cfe-hero'], imagenLista: generatedImages['ahorro-recibo-cfe-tarjeta'], imagenDetalle: generatedImages['ahorro-recibo-cfe-detalle'],
     dolorTitulo: 'Cuando el consumo sube, el recibo también',
     dolor: [
       { icono: 'coins', t: 'Tarifa de alto consumo', d: 'Si tu consumo rebasa el límite de tu zona, tu tarifa cambia y cada kWh cuesta más (tarifa DAC).' },
@@ -92,7 +76,7 @@ export const landings: Landing[] = [
     meta: 'Energía solar con respaldo para áreas comunes de fraccionamientos y para desarrolladores inmobiliarios: accesos, bombeo, alumbrado y seguridad.',
     h1: 'Energía con respaldo para tu fraccionamiento o desarrollo',
     sub: 'Soluciones para áreas comunes, bombeo, accesos y seguridad, pensadas para comités, administradores y desarrolladores inmobiliarios.',
-    imagen: resRed, imagenLista: resInseguridad,
+    imagen: generatedImages['fraccionamientos-hero'], imagenLista: generatedImages['fraccionamientos-tarjeta'], imagenDetalle: generatedImages['fraccionamientos-detalle'],
     dolorTitulo: 'Las áreas comunes también dependen de la red',
     dolor: [
       { icono: 'shield', t: 'Accesos y casetas', d: 'Plumas, portones y cámaras fuera de servicio comprometen la seguridad de todos los vecinos.' },
@@ -119,7 +103,7 @@ export const landings: Landing[] = [
     meta: 'Respaldo con baterías y energía solar para restaurantes: protege tu cámara de frío, tu cocina y tu punto de venta, y reduce tu recibo de luz.',
     h1: 'Tu cocina y tu cámara de frío no pueden depender de la suerte',
     sub: 'Respaldo con baterías y energía solar para proteger tu inventario, tu servicio y tu recibo de luz.',
-    imagen: comRestaurante, imagenLista: comMerma,
+    imagen: generatedImages['restaurantes-hero'], imagenLista: generatedImages['restaurantes-tarjeta'], imagenDetalle: generatedImages['restaurantes-detalle'],
     dolorTitulo: 'Un apagón en pleno servicio',
     dolor: [
       { icono: 'snow', t: 'Cadena de frío', d: 'Una cámara de refrigeración sin energía puede significar merma de inventario en pocas horas.' },
@@ -144,7 +128,7 @@ export const landings: Landing[] = [
     meta: 'Energía solar con respaldo para hoteles: iluminación, climatización, accesos, elevadores y cocina. Experiencia en cadena hotelera en Quintana Roo.',
     h1: 'Que el huésped no note un apagón',
     sub: 'Energía solar con respaldo para iluminación, climatización, accesos, elevadores y cocina, con experiencia en proyectos hoteleros.',
-    imagen: comHotel, imagenLista: comOficinas,
+    imagen: generatedImages['hoteles-hero'], imagenLista: generatedImages['hoteles-tarjeta'], imagenDetalle: generatedImages['hoteles-detalle'],
     dolorTitulo: 'En hotelería, la energía es parte del servicio',
     dolor: [
       { icono: 'bed', t: 'Experiencia del huésped', d: 'Un corte afecta habitaciones, recepción y áreas públicas, y se refleja en la reputación del hotel.' },
@@ -169,7 +153,7 @@ export const landings: Landing[] = [
     meta: 'Respaldo de energía y ahorro solar para clínicas y hospitales: equipos médicos, refrigeración de medicamentos, iluminación y áreas críticas.',
     h1: 'Continuidad de atención aunque falle la red',
     sub: 'Respaldo de energía para equipos médicos, refrigeración de medicamentos e iluminación, con generación solar para reducir el costo de operación.',
-    imagen: comClinica, imagenLista: comOficinas,
+    imagen: generatedImages['clinicas-hospitales-hero'], imagenLista: generatedImages['clinicas-hospitales-tarjeta'], imagenDetalle: generatedImages['clinicas-hospitales-detalle'],
     dolorTitulo: 'En salud, la continuidad es parte de la atención',
     dolor: [
       { icono: 'heart', t: 'Equipos médicos', d: 'Monitores, equipos de diagnóstico y de soporte requieren energía estable y continua.' },
@@ -194,7 +178,7 @@ export const landings: Landing[] = [
     meta: 'Reduce el costo de energía de áreas comunes de plazas comerciales y asegura la operación: iluminación, elevadores, climatización y seguridad.',
     h1: 'Menos costo de energía en áreas comunes, operación asegurada',
     sub: 'Generación solar y almacenamiento para pasillos, estacionamientos, elevadores y servicios compartidos de plazas y centros comerciales.',
-    imagen: comOficinas, imagenLista: comHotel,
+    imagen: generatedImages['plazas-comerciales-hero'], imagenLista: generatedImages['plazas-comerciales-tarjeta'], imagenDetalle: generatedImages['plazas-comerciales-detalle'],
     dolorTitulo: 'Las áreas comunes consumen todo el día',
     dolor: [
       { icono: 'bulb', t: 'Muchas horas encendido', d: 'Pasillos, estacionamiento y fachadas operan durante todo el horario comercial.' },
@@ -218,7 +202,7 @@ export const landings: Landing[] = [
     meta: 'Energía solar con respaldo para oficinas y corporativos: continuidad de servidores y telecomunicaciones, ahorro y apoyo en huella de carbono.',
     h1: 'Continuidad de trabajo y menor huella de carbono',
     sub: 'Respaldo para servidores, telecomunicaciones y equipos, más energía solar para reducir consumo y apoyar tus metas de sustentabilidad.',
-    imagen: comOficinas, imagenLista: comHotel,
+    imagen: generatedImages['oficinas-corporativos-hero'], imagenLista: generatedImages['oficinas-corporativos-tarjeta'], imagenDetalle: generatedImages['oficinas-corporativos-detalle'],
     dolorTitulo: 'Cuando se cae la energía, se detiene el trabajo',
     dolor: [
       { icono: 'server', t: 'Servidores y telecom', d: 'Un corte afecta servicios, datos y comunicación con clientes.' },
@@ -242,7 +226,7 @@ export const landings: Landing[] = [
     meta: 'Energía solar para escuelas y universidades: reduce el costo de energía del campus, asegura laboratorios y cómputo, y fortalece tu compromiso de sustentabilidad.',
     h1: 'Energía para campus: ahorro, continuidad y ejemplo de sustentabilidad',
     sub: 'Generación solar y respaldo para aulas, laboratorios, cómputo y bombeo, con proyectos por etapas que se adaptan al presupuesto institucional.',
-    imagen: comOficinas, imagenLista: comHotel,
+    imagen: generatedImages['escuelas-universidades-hero'], imagenLista: generatedImages['escuelas-universidades-tarjeta'], imagenDetalle: generatedImages['escuelas-universidades-detalle'],
     dolorTitulo: 'Un campus consume mucho y tiene presupuesto limitado',
     dolor: [
       { icono: 'coins', t: 'Presupuesto institucional', d: 'El gasto en energía compite con recursos para la actividad académica.' },
@@ -266,7 +250,7 @@ export const landings: Landing[] = [
     meta: 'Energía solar con respaldo para PyMEs, comercios, talleres y bodegas: protege tus equipos, no pierdas ventas por un apagón y reduce tu recibo de luz.',
     h1: 'Tu negocio no se detiene: energía solar con respaldo para PyMEs',
     sub: 'Protege tus equipos, no pierdas ventas por un apagón y reduce tu recibo de luz con un sistema dimensionado a tu consumo.',
-    imagen: comRestaurante, imagenLista: comMerma,
+    imagen: generatedImages['pymes-hero'], imagenLista: generatedImages['pymes-tarjeta'], imagenDetalle: generatedImages['pymes-detalle'],
     dolorTitulo: 'Cada hora sin luz es una hora sin vender',
     dolor: [
       { icono: 'store', t: 'Ventas perdidas', d: 'Sin punto de venta, iluminación y refrigeración, el negocio se detiene.' },
@@ -292,7 +276,7 @@ export const landings: Landing[] = [
     meta: 'Microredes con solar y almacenamiento BESS para plantas automotrices y de autopartes: menos costo por demanda, energía estable y cumplimiento del Código de Red.',
     h1: 'Energía estable para tu línea y menos costo por demanda',
     sub: 'Microredes con generación solar y almacenamiento BESS para plantas automotrices y de autopartes. Medición, diseño y operación con inteligencia artificial.',
-    imagen: indManufactura, imagenLista: indParo,
+    imagen: generatedImages['automotriz-hero'], imagenLista: generatedImages['automotriz-tarjeta'], imagenDetalle: generatedImages['automotriz-detalle'],
     dolorTitulo: 'Un microcorte puede detener toda la línea',
     dolor: [
       { icono: 'cog', t: 'Paros de línea', d: 'Un corte detiene robots, PLC y ensamble, y compromete las entregas justo a tiempo.' },
@@ -316,7 +300,7 @@ export const landings: Landing[] = [
     meta: 'Controla los picos de demanda de hornos, soldadura y maquinaria con microredes solares y almacenamiento BESS para plantas metalmecánicas y metalúrgicas.',
     h1: 'Controla los picos de demanda de hornos, soldadura y maquinaria',
     sub: 'Almacenamiento BESS y generación solar para plantas metalmecánicas y metalúrgicas: menos cargo por demanda y más continuidad.',
-    imagen: indManufactura, imagenLista: indParo,
+    imagen: generatedImages['metalmecanica-hero'], imagenLista: generatedImages['metalmecanica-tarjeta'], imagenDetalle: generatedImages['metalmecanica-detalle'],
     dolorTitulo: 'Equipos de alta potencia, picos de alto costo',
     dolor: [
       { icono: 'coins', t: 'Demanda máxima alta', d: 'Hornos, soldadura y maquinado generan picos que encarecen el cargo por demanda.' },
@@ -340,7 +324,7 @@ export const landings: Landing[] = [
     meta: 'Energía estable y menor cargo por demanda para plantas de plásticos: inyectoras, extrusoras y chillers con microredes solares y BESS.',
     h1: 'Energía estable para inyectoras, extrusoras y chillers',
     sub: 'Microredes con solar y almacenamiento BESS para plantas de plásticos: menos picos de demanda y menos riesgo por interrupciones.',
-    imagen: indManufactura, imagenLista: indParo,
+    imagen: generatedImages['plasticos-hero'], imagenLista: generatedImages['plasticos-tarjeta'], imagenDetalle: generatedImages['plasticos-detalle'],
     dolorTitulo: 'Si la línea se detiene, el proceso se pierde',
     dolor: [
       { icono: 'cog', t: 'Picos de arranque', d: 'Inyectoras, extrusoras y chillers generan picos de demanda al arrancar y operar.' },
@@ -363,7 +347,7 @@ export const landings: Landing[] = [
     meta: 'Protege la cadena de frío y la producción de plantas de alimentos con microredes solares y almacenamiento BESS: continuidad y menor costo de energía.',
     h1: 'Protege tu cadena de frío y tu producción',
     sub: 'Microredes con solar y almacenamiento BESS para plantas de alimentos y bebidas: continuidad en refrigeración y menor costo de energía.',
-    imagen: comMerma, imagenLista: indSistema,
+    imagen: generatedImages['alimentos-hero'], imagenLista: generatedImages['alimentos-tarjeta'], imagenDetalle: generatedImages['alimentos-detalle'],
     dolorTitulo: 'La energía es parte de la inocuidad',
     dolor: [
       { icono: 'snow', t: 'Cadena de frío', d: 'Una falla de energía pone en riesgo producto terminado y materia prima.' },
@@ -387,7 +371,7 @@ export const landings: Landing[] = [
     meta: 'Calidad y continuidad de energía para plantas aeroespaciales: procesos largos, equipos de precisión y apoyo en huella de carbono.',
     h1: 'Energía de calidad para procesos de precisión',
     sub: 'Medición de calidad de energía, almacenamiento BESS y generación solar para plantas aeroespaciales con procesos largos y equipos de precisión.',
-    imagen: indManufactura, imagenLista: indSistema,
+    imagen: generatedImages['aeroespacial-hero'], imagenLista: generatedImages['aeroespacial-tarjeta'], imagenDetalle: generatedImages['aeroespacial-detalle'],
     dolorTitulo: 'La precisión depende de la energía',
     dolor: [
       { icono: 'gauge', t: 'Calidad de energía', d: 'Armónicos y distorsión pueden afectar equipos de precisión y metrología.' },
@@ -410,7 +394,7 @@ export const landings: Landing[] = [
     meta: 'Calidad de energía y respaldo para plantas de electrónica y semiconductores: microcortes, armónicos y climatización de salas limpias.',
     h1: 'Calidad de energía para procesos que no toleran microcortes',
     sub: 'Medición, almacenamiento BESS y control inteligente para plantas de electrónica y semiconductores.',
-    imagen: indSistema, imagenLista: indManufactura,
+    imagen: generatedImages['electronica-semiconductores-hero'], imagenLista: generatedImages['electronica-semiconductores-tarjeta'], imagenDetalle: generatedImages['electronica-semiconductores-detalle'],
     dolorTitulo: 'Un microcorte basta para afectar un lote',
     dolor: [
       { icono: 'bolt', t: 'Microcortes y caídas de tensión', d: 'Eventos de milisegundos pueden detener líneas sensibles y afectar la calidad.' },
@@ -433,7 +417,7 @@ export const landings: Landing[] = [
     meta: 'Continuidad y calidad de energía para plantas farmacéuticas: salas limpias, cadena de frío y procesos regulados, con microredes solares y BESS.',
     h1: 'Continuidad de energía para procesos regulados',
     sub: 'Respaldo, calidad de energía y generación solar para plantas farmacéuticas, coordinados con tu área de calidad y validación.',
-    imagen: indSistema, imagenLista: indManufactura,
+    imagen: generatedImages['farmaceutica-hero'], imagenLista: generatedImages['farmaceutica-tarjeta'], imagenDetalle: generatedImages['farmaceutica-detalle'],
     dolorTitulo: 'En procesos regulados, una interrupción cuesta más',
     dolor: [
       { icono: 'snow', t: 'Cadena de frío', d: 'Producto y materia prima requieren temperatura controlada de forma continua.' },
@@ -457,7 +441,7 @@ export const landings: Landing[] = [
     meta: 'Energía firme para centros de datos en zonas con red saturada: microredes con solar y almacenamiento BESS, calidad de energía y control con IA. Socios de la Asociación Mexicana de Data Centers.',
     h1: 'Energía firme para centros de datos, aun con la red saturada',
     sub: 'Microredes con almacenamiento BESS, generación solar y control con inteligencia artificial para centros de datos.',
-    imagen: indDatacenter, imagenLista: indSistema,
+    imagen: generatedImages['data-centers-hero'], imagenLista: generatedImages['data-centers-tarjeta'], imagenDetalle: generatedImages['data-centers-detalle'],
     dolorTitulo: 'La demanda de energía crece más rápido que la red',
     dolor: [
       { icono: 'alert', t: 'Red saturada', d: 'En varias zonas industriales la energía es insuficiente o inestable, y no se pueden recibir más cargas.' },
@@ -481,7 +465,7 @@ export const landings: Landing[] = [
     meta: 'Energía como ventaja competitiva para parques industriales: diagnóstico a inquilinos, microredes por etapas y energía firme para atraer y retener empresas.',
     h1: 'Energía como ventaja competitiva para tu parque industrial',
     sub: 'Un programa de energía para operadores y desarrolladores de parques: diagnóstico a inquilinos y microredes por etapas.',
-    imagen: indHero, imagenLista: indPlanta,
+    imagen: generatedImages['parques-industriales-hero'], imagenLista: generatedImages['parques-industriales-tarjeta'], imagenDetalle: generatedImages['parques-industriales-detalle'],
     dolorTitulo: 'Los inquilinos eligen parques con energía confiable',
     dolor: [
       { icono: 'alert', t: 'Energía firme', d: 'Las empresas buscan certeza de suministro antes de instalarse o ampliar.' },
@@ -504,7 +488,7 @@ export const landings: Landing[] = [
     meta: 'Reduce el costo de energía de sistemas de agua, municipios y edificios públicos con generación solar y almacenamiento. Experiencia con una Comisión Estatal de Agua.',
     h1: 'Menos costo de energía para sistemas de agua y edificios públicos',
     sub: 'Bombeo, alumbrado y edificios administrativos de organismos operadores, municipios y gobiernos estatales.',
-    imagen: indAgro, imagenLista: indSistema,
+    imagen: generatedImages['agua-y-gobierno-hero'], imagenLista: generatedImages['agua-y-gobierno-tarjeta'], imagenDetalle: generatedImages['agua-y-gobierno-detalle'],
     dolorTitulo: 'La energía es de los mayores costos de operar agua',
     dolor: [
       { icono: 'droplet', t: 'Bombeo', d: 'Pozos y rebombeos concentran gran parte del gasto eléctrico de un organismo operador.' },

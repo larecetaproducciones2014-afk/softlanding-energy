@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageVisual from '../../components/PageVisual.astro';
 import Icon from '../../components/Icon.astro';
 import LeadForm from '../../components/LeadForm.astro';
 import Faq from '../../components/Faq.astro';
@@ -12,11 +13,11 @@ const sectores = landings.filter((l) => l.rubro !== 'residencial');
   description="Solicita un diagnóstico energético para tu planta, negocio o institución: análisis de recibo, picos de demanda, calidad de energía y dimensionamiento de almacenamiento."
   theme="ind" waMsg="Hola Softlanding, quiero solicitar un diagnóstico energético.">
   <section class="sec sec-alt" style="padding:56px 0 30px">
-    <div class="wrap">
+    <div class="wrap visual-intro"><div>
       <span class="eyebrow">Empresas, plantas e instituciones</span>
       <h1>Solicita tu diagnóstico energético</h1>
       <p class="lead" style="margin-top:14px">Conoce cuánto, cuándo y a qué costo consumes energía, y qué proyecto de microred, almacenamiento o respaldo tendría sentido para ti.</p>
-    </div>
+    </div><PageVisual name="diagnostico" /></div>
   </section>
   <section class="sec" style="padding-top:30px">
     <div class="wrap split" style="align-items:start">

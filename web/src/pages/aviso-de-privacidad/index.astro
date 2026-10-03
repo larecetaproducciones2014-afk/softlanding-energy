@@ -1,15 +1,18 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { site } from '../../config/site';
-const fecha = '1 de octubre de 2026';
+import PageVisual from '../../components/PageVisual.astro';
+import { site, wa } from '../../config/site';
+const fecha = '2 de octubre de 2026';
 ---
 <Base title="Aviso de Privacidad" description="Aviso de Privacidad de Softlanding: qué datos personales recabamos, para qué los usamos y cómo ejercer tus derechos." waMsg="Hola Softlanding, tengo una duda sobre mi información personal.">
   <section class="sec"><div class="wrap prose" style="max-width:820px">
     <span class="eyebrow">Legal</span><h1 style="margin-bottom:8px">Aviso de Privacidad</h1>
     <p><small>Última actualización: {fecha}</small></p>
 
+    <PageVisual name="privacidad" compact />
+
     <h2>1. Responsable del tratamiento</h2>
-    <p><span class="pend">{site.razonSocial}</span>, que opera la marca <b>Softlanding</b> (en adelante, "Softlanding"), con domicilio en <span class="pend">{site.domicilio}</span>, es responsable del tratamiento de tus datos personales conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares y demás disposiciones aplicables.</p>
+    <p><b>{site.razonSocial}</b> (en adelante, "Softlanding"), con domicilio en <span class="pend">{site.domicilio}</span>, es responsable del tratamiento de tus datos personales conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares y demás disposiciones aplicables.</p>
 
     <h2>2. Datos personales que recabamos</h2>
     <ul>
@@ -32,7 +35,7 @@ const fecha = '1 de octubre de 2026';
     <p>Este sitio guarda temporalmente, en el almacenamiento de sesión de tu navegador, los parámetros de la campaña por la que llegaste. Se borran al cerrar la pestaña y no se utilizan para publicidad de terceros.</p>
 
     <h2>6. Derechos ARCO y revocación del consentimiento</h2>
-    <p>Puedes acceder, rectificar o cancelar tus datos, oponerte a su tratamiento o revocar tu consentimiento enviando una solicitud a <span class="pend">[correo de privacidad por confirmar]</span> con tu nombre, medio de contacto y una descripción clara de lo que solicitas. Responderemos en los plazos que marca la ley.</p>
+    <p>Puedes acceder, rectificar o cancelar tus datos, oponerte a su tratamiento o revocar tu consentimiento enviando una solicitud a <a href={wa('Hola Softlanding, quiero ejercer mis derechos sobre mis datos personales.')} target="_blank" rel="noopener">WhatsApp de Softlanding: {site.telefono}</a> con tu nombre, medio de contacto y una descripción clara de lo que solicitas. Responderemos en los plazos que marca la ley.</p>
 
     <h2>7. Cambios a este aviso</h2>
     <p>Cualquier cambio se publicará en esta página con su fecha de actualización.</p>

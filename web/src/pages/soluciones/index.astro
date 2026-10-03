@@ -5,7 +5,7 @@ import Hero from '../../components/Hero.astro';
 import Icon from '../../components/Icon.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import Faq from '../../components/Faq.astro';
-import indSistema from '../../assets/img/ind-sistema.png';
+import { generatedImages } from '../../data/generated-images';
 import { rubros } from '../../data/rubros';
 const S = [
   { id: 'medicion', i: 'gauge', t: 'Medición y monitoreo avanzado de la red eléctrica',
@@ -34,7 +34,7 @@ const faq = rubros.industrial.faq.slice(0, 3);
 <Base title="Soluciones: microred, almacenamiento BESS, Código de Red y más"
   description="Microredes con solar y BESS, medición avanzada de la red, peak shaving, Código de Red, asesoría jurídico‑regulatoria, contrato de suministro y huella de carbono."
   theme="ind" waMsg="Hola Softlanding, quiero información de sus soluciones energéticas.">
-  <Hero image={indSistema} h1="Soluciones energéticas de punta a punta" sub="Desde medir tu red hasta operar tu microred con inteligencia artificial, con asesoría regulatoria y de sustentabilidad." crumbs={[{ label: 'Inicio', href: '/' }, { label: 'Soluciones' }]}
+  <Hero image={generatedImages['soluciones']} h1="Soluciones energéticas de punta a punta" sub="Desde medir tu red hasta operar tu microred con inteligencia artificial, con asesoría regulatoria y de sustentabilidad." crumbs={[{ label: 'Inicio', href: '/' }, { label: 'Soluciones' }]}
         chips={['Desde 0.5 MW hasta 20 MW', 'Ahorros posibles mayores al 30 %', 'Hasta 100 % en sistemas autónomos']}>
     <a class="btn btn-primary btn-lg" href="/diagnostico/">Solicitar diagnóstico energético</a>
   </Hero>

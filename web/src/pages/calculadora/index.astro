@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageVisual from '../../components/PageVisual.astro';
 import Icon from '../../components/Icon.astro';
 import LeadForm from '../../components/LeadForm.astro';
 import Faq from '../../components/Faq.astro';
@@ -28,12 +29,12 @@ const faq = [
   description="Calcula el tamaño de sistema solar y de baterías que necesitas para tu casa o negocio a partir de los kWh de tu recibo de CFE. Estimación gratuita en dos minutos."
   waMsg="Hola Softlanding, usé la calculadora y quiero una cotización.">
   <section class="sec sec-alt" style="padding:56px 0 28px">
-    <div class="wrap">
+    <div class="wrap visual-intro"><div>
       <span class="eyebrow">Para casas y negocios</span>
       <h1>Calculadora de consumo solar</h1>
       <p class="lead" style="margin-top:14px">Con los kWh de tu recibo te decimos qué tamaño de sistema necesitarías, cuántos paneles y, si quieres respaldo, cuánta batería.</p>
       <p class="note" id="ind-note" hidden style="margin-top:18px">¿Eres una planta industrial o un organismo público? Para cargas de este tamaño hacemos un <a href="/diagnostico/" style="color:var(--green-700);font-weight:700">diagnóstico energético</a> con medición de tu red.</p>
-    </div>
+    </div><PageVisual name="calculadora" /></div>
   </section>
 
   <section class="sec" style="padding-top:28px">

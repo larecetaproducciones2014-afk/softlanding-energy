@@ -9,7 +9,7 @@ export const site = {
   ciudad: 'Querétaro, Qro.',
   cobertura: 'Base en Querétaro, cobertura en el centro del país',
   // Pendientes de confirmar por Softlanding (aparecen en el Aviso de Privacidad)
-  razonSocial: '[Razón social por confirmar]',
+  razonSocial: 'Softlanding',
   domicilio: '[Domicilio fiscal por confirmar]',
 } as const;
 

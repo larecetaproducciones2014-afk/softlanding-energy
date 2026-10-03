@@ -1,10 +1,5 @@
 import type { ImageMetadata } from 'astro';
-import resFamilia from '../assets/img/res-familia.png';
-import comHotel from '../assets/img/com-hotel.png';
-import indHero from '../assets/img/ind-hero.png';
-import diagrama from '../assets/img/diagrama.png';
-import comOficinas from '../assets/img/com-oficinas.png';
-import indSistema from '../assets/img/ind-sistema.png';
+import { generatedImages } from './generated-images';
 
 export type RubroKey = 'residencial' | 'comercial' | 'industrial';
 
@@ -33,7 +28,7 @@ export const rubros: Record<RubroKey, Rubro> = {
     h1: 'Tu casa, siempre con energía',
     sub: 'Sistemas de energía solar con respaldo de baterías para que tu familia no se quede sin luz, Wi‑Fi, seguridad ni confort.',
     card: 'Energía solar con baterías para que tu familia no se quede sin luz ni Wi‑Fi, y para pagar menos de luz.',
-    imagen: resFamilia, cardImagen: resFamilia,
+    imagen: generatedImages['hub-residencial'], cardImagen: generatedImages['home-residencial'],
     cta: 'Cotiza tu sistema', waMsg: 'Hola Softlanding, quiero información de un sistema solar con respaldo para mi casa.',
     pasosTitulo: 'Genera, almacena y protege',
     pasos: [
@@ -61,7 +56,7 @@ export const rubros: Record<RubroKey, Rubro> = {
     h1: 'Tu negocio no se detiene',
     sub: 'Energía solar con baterías de respaldo para restaurantes, hoteles, clínicas, plazas, oficinas, escuelas y PyMEs: menos recibo y operación continua.',
     card: 'Restaurantes, hoteles, clínicas, plazas, oficinas, escuelas y PyMEs: menos recibo y operación continua.',
-    imagen: comHotel, cardImagen: comHotel,
+    imagen: generatedImages['hub-comercial'], cardImagen: generatedImages['home-comercial'],
     cta: 'Cotiza tu sistema', waMsg: 'Hola Softlanding, quiero información de energía solar con respaldo para mi negocio.',
     pasosTitulo: 'Un sistema pensado para cargas de negocio',
     pasos: [
@@ -87,7 +82,7 @@ export const rubros: Record<RubroKey, Rubro> = {
     h1: 'Energía firme y más barata para tu planta',
     sub: 'Microredes con generación solar y almacenamiento BESS para industria, parques, centros de datos y gobierno: medición, diseño y operación con inteligencia artificial.',
     card: 'Microredes con solar y almacenamiento BESS para industria, centros de datos, parques y organismos públicos.',
-    imagen: indHero, cardImagen: indHero,
+    imagen: generatedImages['hub-industrial'], cardImagen: generatedImages['home-industrial'],
     cta: 'Solicita tu diagnóstico energético', waMsg: 'Hola Softlanding, quiero solicitar un diagnóstico energético para mi planta o empresa.',
     pasosTitulo: 'Mide, diseña y opera tu microred',
     pasos: [
@@ -113,4 +108,3 @@ export const rubros: Record<RubroKey, Rubro> = {
 };
 
 export const rubroList = [rubros.residencial, rubros.comercial, rubros.industrial];
-export const heroImages = { diagrama, comOficinas, indSistema };

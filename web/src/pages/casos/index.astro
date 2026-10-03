@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageVisual from '../../components/PageVisual.astro';
 import Icon from '../../components/Icon.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { site } from '../../config/site';
@@ -11,10 +12,10 @@ const casos = [
 ];
 ---
 <Base title="Experiencia y proyectos" description="Proyectos de Softlanding en industria, sector público y hotelería, y alianza con la Asociación Mexicana de Data Centers." waMsg="Hola Softlanding, quiero conocer sus proyectos.">
-  <section class="sec sec-alt" style="padding:56px 0 30px"><div class="wrap">
+  <section class="sec sec-alt" style="padding:56px 0 30px"><div class="wrap visual-intro"><div>
     <span class="eyebrow">Experiencia</span><h1>Proyectos en industria, sector público y hotelería</h1>
     <p class="lead" style="margin-top:14px">Softlanding es una empresa de {site.empresa}. Estos son algunos de los sectores donde hemos trabajado.</p>
-  </div></section>
+  </div><PageVisual name="experiencia" /></div></section>
   <section class="sec"><div class="wrap">
     <div class="grid g2">
       {casos.map((c) => (

@@ -1,0 +1,14 @@
+---
+import { Image } from 'astro:assets';
+import { generatedImages } from '../data/generated-images';
+interface Props { name: keyof typeof generatedImages; compact?: boolean }
+const { name, compact = false } = Astro.props;
+---
+<div class:list={['page-visual', { compact }]}>
+  <Image src={generatedImages[name]} alt="" widths={[360, 640, 960]} sizes={compact ? '360px' : '(min-width:900px) 42vw, 100vw'} quality={72} format="webp" loading="eager" />
+</div>
+<style>
+  .page-visual { border-radius:22px; overflow:hidden; width:100%; aspect-ratio:3/2; box-shadow:0 12px 36px rgba(18,30,42,.08); }
+  .page-visual img { display:block; width:100%; height:100%; object-fit:cover; }
+  .page-visual.compact { max-width:360px; margin:0 auto 28px; }
+</style>

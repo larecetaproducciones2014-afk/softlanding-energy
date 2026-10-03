@@ -1,11 +1,13 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageVisual from '../../components/PageVisual.astro';
 import Icon from '../../components/Icon.astro';
 import { wa } from '../../config/site';
 ---
 <Base title="Recibimos tu solicitud" description="Gracias por contactar a Softlanding. Un asesor te contactará pronto." noindex>
   <section class="sec">
     <div class="wrap center" style="max-width:720px">
+      <PageVisual name="gracias" compact />
       <div class="ico" style="margin:0 auto 20px;width:72px;height:72px"><Icon name="check" /></div>
       <h1>¡Recibimos tu solicitud!</h1>
       <p class="lead" style="margin:16px auto">Un asesor de Softlanding te contactará pronto. Si quieres avanzar más rápido, escríbenos por WhatsApp y mándanos una foto de tu recibo de luz.</p>

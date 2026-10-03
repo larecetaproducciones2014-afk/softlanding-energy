@@ -6,7 +6,7 @@ import Icon from '../../components/Icon.astro';
 import Faq from '../../components/Faq.astro';
 import LeadForm from '../../components/LeadForm.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import asesor from '../../assets/img/asesor.png';
+import { generatedImages } from '../../data/generated-images';
 import { wa } from '../../config/site';
 const servicios = [
   { i: 'sun', t: 'Limpieza de paneles', d: 'El polvo y la suciedad reducen la generación. Limpieza segura y periódica para recuperar el rendimiento de tu sistema.' },
@@ -26,7 +26,7 @@ const faq = [
 <Base title="Mantenimiento y reparación de paneles solares, inversores y baterías"
   description="Limpieza, revisión preventiva y reparación de paneles solares, inversores y baterías en Querétaro y el centro del país. Atendemos sistemas instalados por cualquier empresa."
   theme="res" waMsg="Hola Softlanding, necesito mantenimiento o reparación de mi sistema solar.">
-  <Hero image={asesor} h1="Mantenimiento y reparación de sistemas solares" sub="Limpieza, revisión y reparación de paneles, inversores y baterías. Atendemos tu sistema aunque no lo hayamos instalado nosotros."
+  <Hero image={generatedImages['mantenimiento']} h1="Mantenimiento y reparación de sistemas solares" sub="Limpieza, revisión y reparación de paneles, inversores y baterías. Atendemos tu sistema aunque no lo hayamos instalado nosotros."
         crumbs={[{ label: 'Inicio', href: '/' }, { label: 'Mantenimiento' }]}>
     <a class="btn btn-primary btn-lg" href="#solicitud">Solicitar servicio</a>
     <a class="btn btn-ghost-light btn-lg" href={wa('Hola Softlanding, necesito mantenimiento o reparación de mi sistema solar.')} target="_blank" rel="noopener"><Icon name="whatsapp" /> WhatsApp</a>
