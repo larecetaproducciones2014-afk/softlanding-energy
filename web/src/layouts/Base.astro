@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { site } from '../config/site';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Analytics from '../components/Analytics.astro';
 import Icon from '../components/Icon.astro';
 import { wa } from '../config/site';
 
@@ -56,6 +57,7 @@ const org = {
   <Header />
   <main id="main"><slot /></main>
   <Footer />
+  <Analytics />
   <a class="wafab" href={wa(waMsg)} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp a Softlanding" data-track="whatsapp_float">
     <Icon name="whatsapp" />
   </a>

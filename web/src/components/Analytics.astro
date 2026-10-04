@@ -1,0 +1,47 @@
+<div id="analytics-choice" class="analytics-choice" hidden role="region" aria-label="Preferencias de medición">
+  <p>¿Nos permites medir las visitas para mejorar este sitio? Usamos cookies de Google Analytics. <a href="/aviso-de-privacidad/">Ver aviso de privacidad</a>.</p>
+  <div><button type="button" data-analytics-choice="yes">Aceptar medición</button><button type="button" data-analytics-choice="no">Continuar sin medición</button></div>
+</div>
+<button type="button" id="analytics-preferences" class="analytics-preferences">Preferencias de cookies</button>
+<style>
+.analytics-choice{position:fixed;bottom:20px;left:20px;max-width:470px;padding:20px;background:white;color:#2E4057;border:1px solid #dce5d5;box-shadow:0 4px 24px #0002;border-radius:12px;z-index:1000}.analytics-choice[hidden]{display:none}.analytics-choice p{margin:0 0 12px;font-size:14px}.analytics-choice div{display:flex;gap:8px;flex-wrap:wrap}.analytics-choice button{padding:9px 12px;border:1px solid #2E4057;border-radius:6px;background:white;color:#2E4057;cursor:pointer}.analytics-choice button:first-child{background:#2E4057;color:white}.analytics-preferences{position:fixed;bottom:4px;left:8px;z-index:999;font-size:11px;background:white;color:#2E4057;border:1px solid #dce5d5;border-radius:4px;padding:3px 6px;cursor:pointer}@media(max-width:540px){.analytics-choice{left:12px;right:12px;bottom:24px}}
+</style>
+<script is:inline>
+(() => {
+  const id = 'G-YLDXF926S8', key = 'softlanding_analytics_consent';
+  const panel = document.getElementById('analytics-choice');
+  let started = false;
+  function stored() { try { return localStorage.getItem(key); } catch { return null; } }
+  function start() {
+    if (started || stored() !== 'yes' || !['softlanding-energy.com','www.softlanding-energy.com'].includes(location.hostname)) return;
+    started = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag('consent','default',{analytics_storage:'granted',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
+    window.gtag('js',new Date());
+    const clean = new URL(location.origin + location.pathname);
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k => {
+      const v = new URLSearchParams(location.search).get(k);
+      if (v && /^[a-zA-Z0-9_.-]{1,100}$/.test(v)) clean.searchParams.set(k,v);
+    });
+    let ref = ''; try { const u = new URL(document.referrer); ref = u.origin + u.pathname; } catch {}
+    window.gtag('config',id,{page_location:clean.href,page_referrer:ref,allow_google_signals:false,allow_ad_personalization_signals:false});
+    const script = document.createElement('script'); script.async = true; script.src = 'https://www.googletagmanager.com/gtag/js?id='+id; document.head.appendChild(script);
+  }
+  if (!stored()) panel.hidden = false;
+  start();
+  document.getElementById('analytics-preferences').addEventListener('click',()=>{panel.hidden=false;});
+  panel.addEventListener('click',event=>{
+    const button = event.target.closest('[data-analytics-choice]'); if (!button) return;
+    try { localStorage.setItem(key,button.dataset.analyticsChoice); } catch { panel.hidden=true; return; }
+    panel.hidden=true;
+    if (button.dataset.analyticsChoice==='yes') start();
+    else if (started) location.reload();
+  });
+  document.addEventListener('click',event=>{
+    const link=event.target.closest('a[href]');
+    if (!started || stored()!=='yes' || !link) return;
+    try { const url=new URL(link.href); if (url.hostname==='wa.me') window.gtag('event','whatsapp_click',{page_path:location.pathname}); } catch {}
+  });
+})();
+</script>
