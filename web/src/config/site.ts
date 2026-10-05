@@ -4,8 +4,8 @@ export const site = {
   tagline: 'Your Trusted Partner',
   url: 'https://softlanding-energy.com',
   empresa: 'ACISSA — Almacenamiento y Eficiencia de Energía',
-  whatsapp: '524425611029',
-  telefono: '+52 442 561 1029',
+  whatsapp: '524461398144',
+  telefono: '+52 446 139 8144',
   ciudad: 'Querétaro, Qro.',
   cobertura: 'Base en Querétaro, cobertura en el centro del país',
   // Pendientes de confirmar por Softlanding (aparecen en el Aviso de Privacidad)
