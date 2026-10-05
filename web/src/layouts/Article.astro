@@ -1,0 +1,16 @@
+---
+import Base from './Base.astro';
+const { frontmatter } = Astro.props;
+const url = 'https://softlanding-energy.com/blog/paneles-solares-durante-apagon/';
+const schema = { '@context': 'https://schema.org', '@type': 'Article', headline: frontmatter.title, description: frontmatter.description, datePublished: '2026-10-04', dateModified: '2026-10-04', author: { '@type': 'Organization', name: 'Softlanding' }, publisher: { '@type': 'Organization', name: 'Softlanding' }, mainEntityOfPage: url, inLanguage: 'es-MX' };
+---
+<Base title={frontmatter.title} description={frontmatter.description} jsonLd={[schema]}>
+  <article class="guide wrap">
+    <nav aria-label="Ruta de navegación"><a href="/">Inicio</a> / <a href="/blog/">Guías de energía</a></nav>
+    <p class="date">Publicado el 4 de octubre de 2026 · Softlanding</p>
+    <slot />
+  </article>
+</Base>
+<style>
+.guide{max-width:850px;padding-top:48px;padding-bottom:64px}.guide nav,.date{font-size:.9rem;color:#526576}.guide :global(h1){font-size:clamp(2rem,5vw,3rem);line-height:1.15;margin:24px 0}.guide :global(h2){font-size:1.6rem;margin:36px 0 14px}.guide :global(p){line-height:1.85;margin:16px 0}.guide :global(a){color:#3f7425;text-decoration:underline;text-underline-offset:3px}.guide :global(strong){color:#2e4057}
+</style>
